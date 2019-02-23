@@ -41,3 +41,35 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+
+# Site Author
+author:
+  name             : "Aiko Radlingmayr"
+  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "Bio."
+  location         : "Austria"
+  email            :
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      # url: mailto:your.name@email.com
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://radaiko.github.io"
+    - label: "GitHub radaiko"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/radaiko"
+
