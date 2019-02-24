@@ -16,10 +16,10 @@ remote_theme           : "mmistakes/minimal-mistakes"
 
 # Site Settings
 locale                   : "de-AT"
-title                    : "Aiko's Blog"
+title                    : "Aiko's Tech Blog"
 title_separator          : "-"
 name                     : "Aiko Radlingmayr"
-description              : "An amazing website."
+description              : ""
 url                      : "https://radaiko.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : radaiko/radaiko.github.io # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
