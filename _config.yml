@@ -34,10 +34,8 @@ comments:
       branch    : "master"
       endpoint  : https://{your Staticman v3 API}/v3/entry/github/
 # SEO Related
-google_site_verification :
-bing_site_verification   :
-yandex_site_verification :
-naver_site_verification  :
+google_site_verification : "_83jd305qlCEiA78dxmHb0spSpAuk_en_ga4LNufP5Q"
+
 
 # Social Sharing
 twitter:
