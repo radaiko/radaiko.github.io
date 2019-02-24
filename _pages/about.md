@@ -2,4 +2,4 @@
 title: About
 permalink: /about/
 ---
-## About me
+Hi, my name is Aiko and I'm the guy who learned nothing but do everything.
