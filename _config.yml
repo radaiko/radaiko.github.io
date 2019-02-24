@@ -16,7 +16,7 @@ remote_theme           : "mmistakes/minimal-mistakes"
 
 # Site Settings
 locale                   : "de-AT"
-title                    : "Aiko's Blox"
+title                    : "Aiko's Blog"
 title_separator          : "-"
 name                     : "Aiko Radlingmayr"
 description              : "An amazing website."
