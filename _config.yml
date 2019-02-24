@@ -108,7 +108,7 @@ analytics:
 author:
   name             : "Aiko Radlingmayr"
   avatar           : "/assets/images/radaiko_author.jpg"
-  bio              : "I am an amazing person."
+  bio              : "A guy who learned nothing and do everything."
   location         : "Austria"
   email            :
   links:
@@ -284,3 +284,10 @@ defaults:
       comments: # true
       share: true
       related: true
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
