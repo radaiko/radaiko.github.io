@@ -36,6 +36,14 @@ comments:
 # SEO Related
 google_site_verification : "_83jd305qlCEiA78dxmHb0spSpAuk_en_ga4LNufP5Q"
 
+# search
+search                   : true # true, false (default)
+search_full_content      : true # true, false (default)
+search_provider          : "google" # lunr (default), algolia, google
+google:
+  search_engine_id       : "005144171374584987367:n9o9jhsywn0" # YOUR_SEARCH_ENGINE_ID
+  instant_search         : true # false (default), true
+
 
 # Social Sharing
 twitter:
@@ -54,9 +62,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : google # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          :
+    tracking_id          : "UA-135024328-1"
     anonymize_ip         : # true, false (default)
 
 
