@@ -1,0 +1,16 @@
+# Authors
+
+Aiko Radlingmayr:
+  name        : "Aiko Radlingmayr"
+  bio         : "What do you want, jewels? I am a very extravagant man."
+  avatar      : "/assets/images/radaiko_author.jpg"
+  links:
+    - label: "Email"
+      icon: "/assets/images/icons/email.png"
+      url: mailto:radlingmayr.a@gmail.com
+    - label: "Website"
+      icon: "/assets/images/icons/website.png"
+      url: "https://radaiko.github.io"
+    - label: "Github"
+      icon: "/assets/images/icons/github.png"
+      url: "https://github.com/radaiko"
