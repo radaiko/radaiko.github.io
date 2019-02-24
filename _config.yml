@@ -77,13 +77,13 @@ author:
   email            :
   links:
     - label: "Email"
-      icon: "/assets/images/icons/email.png"
+      icon: "fas fa-fw fa-envelope"
       url: mailto:radlingmayr.a@gmail.com
     - label: "Website"
-      icon: "/assets/images/icons/website.png"
+      icon: "fas fa-fw fa-link"
       url: "https://radaiko.github.io"
     - label: "Github"
-      icon: "/assets/images/icons/github.png"
+      icon: "fab fa-fw fa-github"
       url: "https://github.com/radaiko"
 
 # # Site Footer
