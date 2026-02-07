@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-07T20:37:04.187347+00:00",
+  "generatedAt": "2026-02-07T20:39:25.902498+00:00",
   "repos": [
     {
       "fullName": "radaiko/Graft",
@@ -8,6 +8,30 @@
       "isOwn": true,
       "commits": 58,
       "lastActivity": "2026-02-07T20:15:16Z"
+    },
+    {
+      "fullName": "radaiko/SparkShare",
+      "name": "SparkShare",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 8,
+      "lastActivity": "2026-02-05T16:47:02Z"
+    },
+    {
+      "fullName": "radaiko/DevCom",
+      "name": "DevCom",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 6,
+      "lastActivity": "2026-01-29T18:06:53Z"
+    },
+    {
+      "fullName": "radaiko/radaiko.github.io",
+      "name": "radaiko.github.io",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-07T20:35:43Z"
     }
   ],
   "weeklyCommits": [
@@ -21,9 +45,9 @@
     0,
     0,
     0,
-    0,
-    58
+    6,
+    67
   ],
-  "totalCommits": 58,
-  "activeWeeks": 1
+  "totalCommits": 73,
+  "activeWeeks": 2
 }
