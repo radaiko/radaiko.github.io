@@ -1266,9 +1266,9 @@
     }
 
     async function fetchFromPublicAPI() {
-      const pages = [1, 2, 3];
+      const pageNums = [1, 2, 3];
       const results = await Promise.all(
-        pages.map(p =>
+        pageNums.map(p =>
           fetch(`${GITHUB_API}/users/${GITHUB_USER}/events?per_page=100&page=${p}`)
             .then(r => r.ok ? r.json() : [])
             .catch(() => [])
