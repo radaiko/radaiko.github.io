@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>radaiko — Developer</title>
+  <meta name="description" content="Software developer from Upper Austria. Building developer tools, desktop apps, and cross-platform solutions with C#, .NET, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-surface: #111118;
+      --bg-elevated: #1a1a24;
+      --bg-hover: #22222f;
+      --border: #2a2a3a;
+      --border-subtle: #1e1e2a;
+      --text-primary: #e8e8f0;
+      --text-secondary: #8888a0;
+      --text-muted: #555568;
+      --accent: #64ffb4;
+      --accent-dim: #64ffb433;
+      --accent-glow: #64ffb418;
+      --orange: #ff9f64;
+      --blue: #64b5ff;
+      --purple: #b464ff;
+      --pink: #ff64b5;
+      --yellow: #ffd764;
+      --red: #ff6464;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Outfit', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) var(--bg-deep);
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === NOISE OVERLAY === */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* === GRID BACKGROUND === */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(var(--border-subtle) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
+    }
+
+    /* === GLOW ORB === */
+    .glow-orb {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+      z-index: 0;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-80px, 40px) scale(1.1); }
+      66% { transform: translate(40px, -30px) scale(0.95); }
+    }
+
+    /* === LAYOUT === */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* === NAV === */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      animation: fadeIn 0.6s ease both;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--text-muted); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* === HERO === */
+    .hero {
+      padding: 100px 0 80px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content { animation: slideUp 0.8s ease both 0.1s; }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .accent { color: var(--accent); }
+
+    .hero-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 500px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .hero-desc strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-deep);
+    }
+
+    .btn-primary:hover {
+      background: #8affcc;
+      box-shadow: 0 0 30px var(--accent-dim);
+    }
+
+    .btn-secondary {
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Avatar */
+    .hero-avatar {
+      animation: slideUp 0.8s ease both 0.25s;
+    }
+
+    .avatar-frame {
+      position: relative;
+      width: 220px;
+      height: 220px;
+    }
+
+    .avatar-frame::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--accent), var(--purple), var(--blue));
+      opacity: 0.6;
+      animation: borderRotate 6s linear infinite;
+    }
+
+    @keyframes borderRotate {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    .avatar-frame img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 3px solid var(--bg-deep);
+    }
+
+    /* === SECTION HEADERS === */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: 14px;
+      font-family: var(--mono);
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section-header .line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-header .num {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* === STATUS SECTION === */
+    .status-section {
+      padding: 60px 0;
+    }
+
+    .status-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .status-current h3 {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .status-period {
+      color: var(--accent);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .status-project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 320px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .status-loading {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 12px 0;
+    }
+
+    .status-repo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+    }
+
+    .status-repo:hover {
+      border-color: var(--text-muted);
+      background: var(--bg-hover);
+    }
+
+    .status-repo-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      width: 28px;
+      text-align: center;
+    }
+
+    .status-repo-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .status-repo-name {
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status-repo-owner {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .status-repo-commits {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .status-repo-badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      background: var(--accent-glow);
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+    }
+
+    .status-repo-badge.low {
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border-color: var(--border);
+    }
+
+    .status-activity h3 {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .activity-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 48px;
+    }
+
+    .activity-bar {
+      width: 8px;
+      border-radius: 2px;
+      background: var(--accent);
+      opacity: 0.3;
+      animation: activityPulse 3s ease-in-out infinite;
+    }
+
+    .activity-bar.active { opacity: 0.8; }
+    .activity-bar:nth-child(1) { height: 30%; animation-delay: 0s; }
+    .activity-bar:nth-child(2) { height: 50%; animation-delay: 0.2s; }
+    .activity-bar:nth-child(3) { height: 70%; animation-delay: 0.4s; }
+    .activity-bar:nth-child(4) { height: 45%; animation-delay: 0.6s; }
+    .activity-bar:nth-child(5) { height: 85%; animation-delay: 0.8s; }
+    .activity-bar:nth-child(6) { height: 60%; animation-delay: 1.0s; }
+    .activity-bar:nth-child(7) { height: 90%; animation-delay: 1.2s; }
+    .activity-bar:nth-child(8) { height: 40%; animation-delay: 1.4s; }
+    .activity-bar:nth-child(9) { height: 75%; animation-delay: 1.6s; }
+    .activity-bar:nth-child(10) { height: 55%; animation-delay: 1.8s; }
+    .activity-bar:nth-child(11) { height: 95%; animation-delay: 2.0s; }
+    .activity-bar:nth-child(12) { height: 65%; animation-delay: 2.2s; }
+
+    @keyframes activityPulse {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.85; }
+    }
+
+    .activity-label {
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+
+    /* === PROJECTS === */
+    .projects-section {
+      padding: 60px 0;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--text-muted);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .project-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+    }
+
+    .project-lang {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+    }
+
+    .lang-csharp { color: var(--purple); border-color: #b464ff33; }
+    .lang-kotlin { color: var(--orange); border-color: #ff9f6433; }
+    .lang-dart { color: var(--blue); border-color: #64b5ff33; }
+    .lang-cpp { color: var(--blue); border-color: #64b5ff33; }
+    .lang-python { color: var(--yellow); border-color: #ffd76433; }
+
+    .project-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .project-footer span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .project-footer svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .project-card.featured .project-main { display: flex; flex-direction: column; }
+
+    .project-card.featured .project-terminal {
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.8;
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot.r { background: var(--red); opacity: 0.7; }
+    .terminal-dot.y { background: var(--yellow); opacity: 0.7; }
+    .terminal-dot.g { background: var(--accent); opacity: 0.7; }
+
+    .terminal-line { color: var(--text-muted); }
+    .terminal-line .prompt { color: var(--accent); }
+    .terminal-line .cmd { color: var(--text-primary); }
+    .terminal-line .flag { color: var(--orange); }
+    .terminal-line .output { color: var(--text-secondary); }
+    .terminal-line .success { color: var(--accent); }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--accent);
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+      margin-left: 2px;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* === TECH STACK === */
+    .tech-section {
+      padding: 60px 0;
+    }
+
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+
+    .tech-pill:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .tech-pill .tech-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* === FOOTER === */
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 60px 0 40px;
+        gap: 40px;
+      }
+
+      .hero-content { order: 2; }
+      .hero-avatar { order: 1; justify-self: center; }
+      .hero-desc { margin: 0 auto; }
+      .hero-meta { justify-content: center; }
+      .hero-actions { justify-content: center; }
+
+      .avatar-frame { width: 160px; height: 160px; }
+
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured {
+        grid-column: span 1;
+        grid-template-columns: 1fr;
+      }
+      .project-card.featured .project-terminal { display: none; }
+
+      .status-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .nav-links { gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 36px; }
+      .nav-links a { font-size: 12px; }
+      .hero-meta { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="glow-orb"></div>
+
+  <div class="page">
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">radaiko<span> ~/dev</span></div>
+      <ul class="nav-links">
+        <li><a href="#status">Status</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="https://github.com/radaiko" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Building<br>tools that<br><span class="accent">ship.</span></h1>
+        <p class="hero-desc">
+          Software developer crafting <strong>developer tools</strong>, <strong>desktop applications</strong>, and <strong>cross-platform solutions</strong>. Primarily working with the .NET ecosystem.
+        </p>
+        <div class="hero-meta">
+          <span>
+            <svg><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Upper Austria
+          </span>
+          <span>
+            <svg><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            35+ repositories
+          </span>
+        </div>
+        <div class="hero-actions">
+          <a href="https://github.com/radaiko" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            View GitHub
+          </a>
+          <a href="mailto:radaiko@users.noreply.github.com" class="btn btn-secondary">
+            <svg><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Contact
+          </a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar-frame">
+          <img src="https://avatars.githubusercontent.com/u/15850003?v=4" alt="radaiko" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS -->
+    <section id="status" class="status-section reveal">
+      <div class="section-header">
+        <h2>Current Status</h2>
+        <div class="line"></div>
+        <span class="num">01</span>
+      </div>
+      <div class="status-card">
+        <div class="status-current">
+          <h3>Active projects <span class="status-period">last 12 weeks</span></h3>
+          <div class="status-project-list" id="status-project-list">
+            <div class="status-loading">Fetching activity from GitHub...</div>
+          </div>
+        </div>
+        <div class="status-activity">
+          <h3>Commit Activity</h3>
+          <div class="activity-bars" id="activity-bars"></div>
+          <div class="activity-label" id="activity-label">loading commit history...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects-section reveal">
+      <div class="section-header">
+        <h2>Projects</h2>
+        <div class="line"></div>
+        <span class="num">02</span>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- FEATURED: Graft -->
+        <a href="https://github.com/radaiko/Graft" target="_blank" rel="noopener" class="project-card featured" style="--card-accent: var(--accent);">
+          <div class="project-main">
+            <div class="project-top">
+              <div class="project-icon">&#x1F333;</div>
+              <span class="project-lang lang-csharp">C#</span>
+            </div>
+            <h3>Graft</h3>
+            <p>A CLI tool for managing stacked branches and git worktrees. Streamlines complex branching workflows for developers working on multiple features simultaneously.</p>
+            <div class="project-footer">
+              <span>
+                <svg><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Active
+              </span>
+              <span>
+                <svg><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg>
+                Git tooling
+              </span>
+            </div>
+          </div>
+          <div class="project-terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot r"></span>
+              <span class="terminal-dot y"></span>
+              <span class="terminal-dot g"></span>
+            </div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">graft</span> <span class="flag">stack</span></div>
+            <div class="terminal-line"><span class="output">  main</span></div>
+            <div class="terminal-line"><span class="output">  &rArr; feature/auth</span></div>
+            <div class="terminal-line"><span class="output">    &rArr; feature/auth-ui</span></div>
+            <div class="terminal-line"><span class="success">  3 branches stacked</span></div>
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">graft</span> <span class="flag">sync</span></div>
+            <div class="terminal-line"><span class="success">  &#10003; All worktrees synced</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="cursor-blink"></span></div>
+          </div>
+        </a>
+
+        <!-- GourmetClient.MAUI -->
+        <a href="https://github.com/radaiko/GourmetClient.MAUI" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--purple);">
+          <div class="project-top">
+            <div class="project-icon">&#x1F37D;&#xFE0F;</div>
+            <span class="project-lang lang-csharp">C#</span>
+          </div>
+          <h3>GourmetClient.MAUI</h3>
+          <p>Cross-platform mobile and desktop app built with .NET MAUI. Modern client application using the latest .NET stack.</p>
+          <div class="project-footer">
+            <span>
+              <svg><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              .NET MAUI
+            </span>
+          </div>
+        </a>
+
+        <!-- disk-analyzer -->
+        <a href="https://github.com/radaiko/disk-analyzer" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--yellow);">
+          <div class="project-top">
+            <div class="project-icon">&#x1F4CA;</div>
+            <span class="project-lang lang-csharp">C#</span>
+          </div>
+          <h3>disk-analyzer</h3>
+          <p>Disk space analysis and visualization tool. Quickly identify what's consuming storage on your drives.</p>
+          <div class="project-footer">
+            <span>
+              <svg><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>
+              System tool
+            </span>
+          </div>
+        </a>
+
+        <!-- EasyLogger -->
+        <a href="https://github.com/radaiko/EasyLogger" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--pink);">
+          <div class="project-top">
+            <div class="project-icon">&#x1F4DD;</div>
+            <span class="project-lang lang-csharp">C#</span>
+          </div>
+          <h3>EasyLogger</h3>
+          <p>Lightweight logging library for .NET applications. Simple API for structured logging without the complexity.</p>
+          <div class="project-footer">
+            <span>
+              <svg><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+              Library
+            </span>
+          </div>
+        </a>
+
+        <!-- syslog2csv -->
+        <a href="https://github.com/radaiko/syslog2csv" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--yellow);">
+          <div class="project-top">
+            <div class="project-icon">&#x1F4C4;</div>
+            <span class="project-lang lang-python">Python</span>
+          </div>
+          <h3>syslog2csv</h3>
+          <p>A script for converting syslog files to CSV. Quick parsing and transformation of system logs into structured data.</p>
+          <div class="project-footer">
+            <span>
+              <svg><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              CLI tool
+            </span>
+          </div>
+        </a>
+
+        <!-- Doorbell_Hack_IndoorUnit -->
+        <a href="https://github.com/radaiko/Doorbell_Hack_IndoorUnit" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--orange);">
+          <div class="project-top">
+            <div class="project-icon">&#x1F514;</div>
+            <span class="project-lang lang-cpp">C++</span>
+          </div>
+          <h3>Doorbell Hack</h3>
+          <p>ESP8266 HomeKit doorbell hack. Custom firmware to integrate a traditional indoor doorbell unit with Apple HomeKit.</p>
+          <div class="project-footer">
+            <span>
+              <svg><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              IoT / Hardware
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="stack" class="tech-section reveal">
+      <div class="section-header">
+        <h2>Tech Stack</h2>
+        <div class="line"></div>
+        <span class="num">03</span>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>C#</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>.NET</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>WPF</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>.NET MAUI</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>ASP.NET</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--orange);"></span>Kotlin</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>Dart</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>Flutter</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>Docker</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--accent);"></span>gRPC</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--accent);"></span>Git</div>
+        <div class="tech-pill"><span class="tech-dot" style="background: var(--yellow);"></span>CI/CD</div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-left">&copy; 2026 radaiko</div>
+      <div class="footer-links">
+        <a href="https://github.com/radaiko" target="_blank" rel="noopener">GitHub</a>
+        <a href="#projects">Projects</a>
+        <a href="#stack">Stack</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = `${i * 0.1}s`;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger project cards
+    const cards = document.querySelectorAll('.project-card');
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, i * 80);
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+      cardObserver.observe(card);
+    });
+
+    // === DYNAMIC GITHUB STATUS ===
+    const GITHUB_USER = 'radaiko';
+    const GITHUB_API = 'https://api.github.com';
+
+    const repoIcons = {
+      'Graft': '\u{1F333}',
+      'GourmetClient.MAUI': '\u{1F37D}\uFE0F',
+      'disk-analyzer': '\u{1F4CA}',
+      'EasyLogger': '\u{1F4DD}',
+      'syslog2csv': '\u{1F4C4}',
+      'Doorbell_Hack_IndoorUnit': '\u{1F514}',
+    };
+
+    function timeAgo(dateStr) {
+      const seconds = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
+      if (seconds < 60) return 'just now';
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return minutes + 'm ago';
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) return hours + 'h ago';
+      const days = Math.floor(hours / 24);
+      if (days < 7) return days + 'd ago';
+      const weeks = Math.floor(days / 7);
+      return weeks + 'w ago';
+    }
+
+    function renderStatus(data) {
+      const { repos, weeklyCommits, totalCommits, activeWeeks } = data;
+
+      // Render project list
+      const listEl = document.getElementById('status-project-list');
+      listEl.innerHTML = '';
+
+      if (!repos || repos.length === 0) {
+        listEl.innerHTML = '<div class="status-loading">No recent activity found</div>';
+      } else {
+        repos.forEach((repo, i) => {
+          const icon = repoIcons[repo.name] || (repo.isOwn ? '\u{1F4C1}' : '\u{1F517}');
+          const badgeClass = repo.commits >= 5 ? '' : ' low';
+          const ownerPrefix = repo.isOwn ? '' : `<span class="status-repo-owner">${repo.owner}/</span>`;
+
+          const link = document.createElement('a');
+          link.href = `https://github.com/${repo.fullName}`;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.className = 'status-repo';
+          link.innerHTML = `
+            <span class="status-repo-icon">${icon}</span>
+            <div class="status-repo-info">
+              <div class="status-repo-name">${ownerPrefix}${repo.name}</div>
+              <div class="status-repo-commits">${timeAgo(repo.lastActivity)}</div>
+            </div>
+            <span class="status-repo-badge${badgeClass}">${repo.commits} commit${repo.commits !== 1 ? 's' : ''}</span>
+          `;
+          listEl.appendChild(link);
+        });
+      }
+
+      // Render activity bars
+      const maxCommits = Math.max(...weeklyCommits, 1);
+      const barsContainer = document.getElementById('activity-bars');
+      barsContainer.innerHTML = '';
+
+      weeklyCommits.forEach(count => {
+        const bar = document.createElement('div');
+        bar.className = 'activity-bar';
+        const height = count > 0 ? Math.max(15, (count / maxCommits) * 100) : 8;
+        bar.style.height = height + '%';
+        bar.style.opacity = count > 0 ? 0.4 + (count / maxCommits) * 0.6 : 0.1;
+        bar.style.animation = 'none';
+        barsContainer.appendChild(bar);
+      });
+
+      document.getElementById('activity-label').textContent =
+        `${totalCommits} commits across ${activeWeeks} active weeks \u2014 ${repos.length} project${repos.length !== 1 ? 's' : ''}`;
+    }
+
+    async function fetchFromStaticData() {
+      const resp = await fetch('data/activity.json');
+      if (!resp.ok) throw new Error('No static data');
+      return resp.json();
+    }
+
+    async function fetchFromPublicAPI() {
+      const pages = [1, 2, 3];
+      const results = await Promise.all(
+        pages.map(p =>
+          fetch(`${GITHUB_API}/users/${GITHUB_USER}/events?per_page=100&page=${p}`)
+            .then(r => r.ok ? r.json() : [])
+            .catch(() => [])
+        )
+      );
+      const events = results.flat();
+      if (!events.length) throw new Error('No events');
+
+      const now = Date.now();
+      const weekMs = 7 * 24 * 60 * 60 * 1000;
+      const twelveWeeksAgo = now - 12 * weekMs;
+      const repos = {};
+      const weeklyCommits = new Array(12).fill(0);
+
+      events.filter(e => e.type === 'PushEvent').forEach(event => {
+        const eventTime = new Date(event.created_at).getTime();
+        if (eventTime < twelveWeeksAgo) return;
+
+        const repoName = event.repo.name;
+        const shortName = repoName.split('/').pop();
+        const owner = repoName.split('/')[0];
+        const commits = event.payload?.commits?.length || 1;
+
+        if (!repos[repoName]) {
+          repos[repoName] = {
+            fullName: repoName, name: shortName, owner,
+            isOwn: owner === GITHUB_USER, commits: 0,
+            lastActivity: event.created_at,
+          };
+        }
+        repos[repoName].commits += commits;
+        if (event.created_at > repos[repoName].lastActivity) {
+          repos[repoName].lastActivity = event.created_at;
+        }
+
+        const weekIndex = Math.floor((now - eventTime) / weekMs);
+        if (weekIndex < 12) weeklyCommits[11 - weekIndex] += commits;
+      });
+
+      const sorted = Object.values(repos).sort((a, b) => b.commits - a.commits);
+      return {
+        repos: sorted,
+        weeklyCommits,
+        totalCommits: weeklyCommits.reduce((a, b) => a + b, 0),
+        activeWeeks: weeklyCommits.filter(w => w > 0).length,
+      };
+    }
+
+    async function loadStatus() {
+      try {
+        // Try pre-generated data first (includes private repos)
+        const data = await fetchFromStaticData();
+        renderStatus(data);
+      } catch {
+        try {
+          // Fall back to public API (public repos only)
+          const data = await fetchFromPublicAPI();
+          renderStatus(data);
+        } catch {
+          document.getElementById('status-project-list').innerHTML =
+            '<div class="status-loading">Could not load activity data</div>';
+          document.getElementById('activity-label').textContent =
+            'could not load live data';
+        }
+      }
+    }
+
+    loadStatus();
+  </script>
+</body>
+</html>
