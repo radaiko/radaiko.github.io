@@ -699,6 +699,78 @@
       border-radius: 50%;
     }
 
+    /* === DOCS === */
+    .docs-section {
+      padding: 60px 0;
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .docs-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+    }
+
+    .docs-card:hover {
+      border-color: var(--text-muted);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .docs-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .docs-info {
+      min-width: 0;
+    }
+
+    .docs-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .docs-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .docs-loading {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 12px 0;
+    }
+
     /* === FOOTER === */
     footer {
       padding: 48px 0;
@@ -809,6 +881,7 @@
         <li><a href="#status">Status</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#stack">Stack</a></li>
+        <li><a href="#docs">Docs</a></li>
         <li><a href="https://github.com/radaiko" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </nav>
@@ -1024,6 +1097,18 @@
       </div>
     </section>
 
+    <!-- DOCS -->
+    <section id="docs" class="docs-section reveal">
+      <div class="section-header">
+        <h2>Project Docs</h2>
+        <div class="line"></div>
+        <span class="num">04</span>
+      </div>
+      <div class="docs-grid" id="docs-grid">
+        <div class="docs-loading">Loading project documentation sites...</div>
+      </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
       <div class="footer-left">&copy; 2026 radaiko</div>
@@ -1147,6 +1232,31 @@
 
       document.getElementById('activity-label').textContent =
         `${totalCommits} commits across ${activeWeeks} active weeks \u2014 ${repos.length} project${repos.length !== 1 ? 's' : ''}`;
+
+      // Render project docs
+      const docsGrid = document.getElementById('docs-grid');
+      const pages = data.pages || [];
+      if (pages.length > 0) {
+        docsGrid.innerHTML = '';
+        pages.forEach(page => {
+          const icon = repoIcons[page.name] || '\u{1F4D6}';
+          const link = document.createElement('a');
+          link.href = page.url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.className = 'docs-card';
+          link.innerHTML = `
+            <div class="docs-icon">${icon}</div>
+            <div class="docs-info">
+              <div class="docs-name">${page.name}</div>
+              <div class="docs-desc">${page.description || page.url}</div>
+            </div>
+          `;
+          docsGrid.appendChild(link);
+        });
+      } else {
+        docsGrid.innerHTML = '<div class="docs-loading">No documentation sites found</div>';
+      }
     }
 
     async function fetchFromStaticData() {
@@ -1199,11 +1309,31 @@
       });
 
       const sorted = Object.values(repos).sort((a, b) => b.commits - a.commits);
+
+      // Also discover Pages sites from public API
+      let pages = [];
+      try {
+        const reposResp = await fetch(`${GITHUB_API}/users/${GITHUB_USER}/repos?per_page=100`);
+        if (reposResp.ok) {
+          const allRepos = await reposResp.json();
+          pages = allRepos
+            .filter(r => r.has_pages && !r.fork && r.name !== `${GITHUB_USER}.github.io`)
+            .map(r => ({
+              name: r.name,
+              url: `https://${GITHUB_USER}.github.io/${r.name}/`,
+              description: r.description || '',
+              language: r.language || '',
+            }))
+            .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+        }
+      } catch {}
+
       return {
         repos: sorted,
         weeklyCommits,
         totalCommits: weeklyCommits.reduce((a, b) => a + b, 0),
         activeWeeks: weeklyCommits.filter(w => w > 0).length,
+        pages,
       };
     }
 

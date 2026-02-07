@@ -29,6 +29,35 @@ def api_get(path, token):
         return json.loads(resp.read())
 
 
+def fetch_pages_sites(token):
+    """Find all user repos that have GitHub Pages enabled."""
+    pages = []
+    page_num = 1
+    while True:
+        try:
+            repos = api_get(
+                f"/users/{GITHUB_USER}/repos?per_page=100&page={page_num}", token
+            )
+            if not repos:
+                break
+            for repo in repos:
+                if repo.get("has_pages") and not repo.get("fork"):
+                    name = repo["name"]
+                    # The user's .github.io repo is the main site itself, skip it
+                    if name == f"{GITHUB_USER}.github.io":
+                        continue
+                    pages.append({
+                        "name": name,
+                        "url": f"https://{GITHUB_USER}.github.io/{name}/",
+                        "description": repo.get("description") or "",
+                        "language": (repo.get("language") or ""),
+                    })
+            page_num += 1
+        except HTTPError:
+            break
+    return sorted(pages, key=lambda p: p["name"].lower())
+
+
 def fetch_events(token):
     """Fetch up to 300 recent events (3 pages of 100)."""
     all_events = []
@@ -100,12 +129,17 @@ def main():
     total_commits = sum(weekly_commits)
     active_weeks = sum(1 for w in weekly_commits if w > 0)
 
+    # Discover repos with GitHub Pages enabled
+    pages_sites = fetch_pages_sites(token)
+    print(f"Found {len(pages_sites)} repos with GitHub Pages enabled")
+
     output = {
         "generatedAt": now.isoformat(),
         "repos": sorted_repos,
         "weeklyCommits": weekly_commits,
         "totalCommits": total_commits,
         "activeWeeks": active_weeks,
+        "pages": pages_sites,
     }
 
     os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
