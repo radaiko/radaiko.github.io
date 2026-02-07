@@ -21,7 +21,7 @@ jobs:
 
       - name: Fetch GitHub activity
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTIVITY_TOKEN }}
+          ACTIVITY_TOKEN: ${{ secrets.ACTIVITY_TOKEN }}
         run: python scripts/fetch-activity.py
 
       - name: Commit and push if changed

@@ -46,9 +46,9 @@ def fetch_events(token):
 
 
 def main():
-    token = os.environ.get("GITHUB_TOKEN", "")
+    token = os.environ.get("ACTIVITY_TOKEN", "")
     if not token:
-        print("Warning: GITHUB_TOKEN not set, private repos won't be included",
+        print("Warning: ACTIVITY_TOKEN not set, private repos won't be included",
               file=sys.stderr)
 
     events = fetch_events(token)
