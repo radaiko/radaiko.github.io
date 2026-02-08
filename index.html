@@ -529,6 +529,8 @@
       align-items: flex-start;
       justify-content: space-between;
       margin-bottom: 16px;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .project-icon {
@@ -557,6 +559,7 @@
     .lang-dart { color: var(--blue); border-color: #64b5ff33; }
     .lang-cpp { color: var(--blue); border-color: #64b5ff33; }
     .lang-python { color: var(--yellow); border-color: #ffd76433; }
+    .lang-typescript { color: var(--blue); border-color: #64b5ff33; }
 
     .project-card h3 {
       font-size: 18px;
@@ -599,6 +602,11 @@
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+
+    .project-private {
+      opacity: 0.5;
+      font-size: 0.7rem;
     }
 
     .project-card.featured {
@@ -957,7 +965,7 @@
         <a href="https://github.com/radaiko/Graft" target="_blank" rel="noopener" class="project-card featured" style="--card-accent: var(--accent);">
           <div class="project-main">
             <div class="project-top">
-              <div class="project-icon">&#x1F333;</div>
+              <div class="project-icon">&#x1F500;</div>
               <span class="project-lang lang-csharp">C#</span>
             </div>
             <h3>Graft</h3>
@@ -990,6 +998,27 @@
             <div class="terminal-line"><span class="prompt">$</span> <span class="cursor-blink"></span></div>
           </div>
         </a>
+
+        <!-- SparkShare -->
+        <div class="project-card" style="--card-accent: var(--accent);">
+          <div class="project-top">
+            <div class="project-icon">&#x26A1;</div>
+            <span class="project-lang lang-csharp">C#</span>
+            <span class="project-lang lang-typescript">TypeScript</span>
+          </div>
+          <h3>SparkShare</h3>
+          <p>Real-time coordination platform for shared EV charger availability. Enables groups to report, get notified, and reserve open chargers.</p>
+          <div class="project-footer">
+            <span>
+              <svg><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              Full-stack app
+            </span>
+            <span class="project-private">
+              <svg><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              Private
+            </span>
+          </div>
+        </div>
 
         <!-- GourmetClient.MAUI -->
         <a href="https://github.com/radaiko/GourmetClient.MAUI" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--purple);">
@@ -1162,12 +1191,13 @@
     const GITHUB_API = 'https://api.github.com';
 
     const repoIcons = {
-      'Graft': '\u{1F333}',
+      'Graft': '\u{1F500}',
       'GourmetClient.MAUI': '\u{1F37D}\uFE0F',
       'disk-analyzer': '\u{1F4CA}',
       'EasyLogger': '\u{1F4DD}',
       'syslog2csv': '\u{1F4C4}',
       'Doorbell_Hack_IndoorUnit': '\u{1F514}',
+      'SparkShare': '\u{26A1}',
     };
 
     function timeAgo(dateStr) {
