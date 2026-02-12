@@ -543,6 +543,13 @@
       font-size: 18px;
       background: var(--bg-elevated);
       border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .project-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .project-lang {
@@ -965,11 +972,11 @@
         <a href="https://github.com/radaiko/Graft" target="_blank" rel="noopener" class="project-card featured" style="--card-accent: var(--accent);">
           <div class="project-main">
             <div class="project-top">
-              <div class="project-icon">&#x1F500;</div>
+              <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/Graft/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F500}'))"></div>
               <span class="project-lang lang-csharp">C#</span>
             </div>
             <h3>Graft</h3>
-            <p>A CLI tool for managing stacked branches and git worktrees. Streamlines complex branching workflows for developers working on multiple features simultaneously.</p>
+            <p>A cross-platform CLI tool for managing stacked branches and git worktrees. Track dependencies, merge stacks bottom-to-top, and manage worktrees with a built-in web UI.</p>
             <div class="project-footer">
               <span>
                 <svg><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -1002,12 +1009,11 @@
         <!-- SparkShare -->
         <div class="project-card" style="--card-accent: var(--accent);">
           <div class="project-top">
-            <div class="project-icon">&#x26A1;</div>
+            <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/SparkShare/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{26A1}'))"></div>
             <span class="project-lang lang-csharp">C#</span>
-            <span class="project-lang lang-typescript">TypeScript</span>
           </div>
           <h3>SparkShare</h3>
-          <p>Real-time coordination platform for shared EV charger availability. Enables groups to report, get notified, and reserve open chargers.</p>
+          <p>Real-time coordination platform for shared EV charger availability. Create or join groups, report open spots, get notified, and reserve chargers with one tap.</p>
           <div class="project-footer">
             <span>
               <svg><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
@@ -1020,34 +1026,18 @@
           </div>
         </div>
 
-        <!-- GourmetClient.MAUI -->
-        <a href="https://github.com/radaiko/GourmetClient.MAUI" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--purple);">
+        <!-- GourmetClient -->
+        <a href="https://github.com/radaiko/GourmetClient" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--purple);">
           <div class="project-top">
-            <div class="project-icon">&#x1F37D;&#xFE0F;</div>
-            <span class="project-lang lang-csharp">C#</span>
+            <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/GourmetClient/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F37D}\uFE0F'))"></div>
+            <span class="project-lang lang-typescript">TypeScript</span>
           </div>
-          <h3>GourmetClient.MAUI</h3>
-          <p>Cross-platform mobile and desktop app built with .NET MAUI. Modern client application using the latest .NET stack.</p>
+          <h3>GourmetClient</h3>
+          <p>Cross-platform app for company cafeteria menu ordering and billing. Built with Expo React Native (mobile) and Tauri v2 (desktop).</p>
           <div class="project-footer">
             <span>
               <svg><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-              .NET MAUI
-            </span>
-          </div>
-        </a>
-
-        <!-- disk-analyzer -->
-        <a href="https://github.com/radaiko/disk-analyzer" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--yellow);">
-          <div class="project-top">
-            <div class="project-icon">&#x1F4CA;</div>
-            <span class="project-lang lang-csharp">C#</span>
-          </div>
-          <h3>disk-analyzer</h3>
-          <p>Disk space analysis and visualization tool. Quickly identify what's consuming storage on your drives.</p>
-          <div class="project-footer">
-            <span>
-              <svg><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>
-              System tool
+              Expo + Tauri
             </span>
           </div>
         </a>
@@ -1055,11 +1045,11 @@
         <!-- EasyLogger -->
         <a href="https://github.com/radaiko/EasyLogger" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--pink);">
           <div class="project-top">
-            <div class="project-icon">&#x1F4DD;</div>
+            <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/EasyLogger/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F4DD}'))"></div>
             <span class="project-lang lang-csharp">C#</span>
           </div>
           <h3>EasyLogger</h3>
-          <p>Lightweight logging library for .NET applications. Simple API for structured logging without the complexity.</p>
+          <p>Simple, lightweight logging library for .NET. Static API with console and file outputs, automatic caller context, and thread-safe design.</p>
           <div class="project-footer">
             <span>
               <svg><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
@@ -1071,31 +1061,15 @@
         <!-- syslog2csv -->
         <a href="https://github.com/radaiko/syslog2csv" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--yellow);">
           <div class="project-top">
-            <div class="project-icon">&#x1F4C4;</div>
+            <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/syslog2csv/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F4C4}'))"></div>
             <span class="project-lang lang-python">Python</span>
           </div>
           <h3>syslog2csv</h3>
-          <p>A script for converting syslog files to CSV. Quick parsing and transformation of system logs into structured data.</p>
+          <p>A script for converting syslog files to CSV. Supports rsyslog with more syslog server formats planned.</p>
           <div class="project-footer">
             <span>
               <svg><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
               CLI tool
-            </span>
-          </div>
-        </a>
-
-        <!-- Doorbell_Hack_IndoorUnit -->
-        <a href="https://github.com/radaiko/Doorbell_Hack_IndoorUnit" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--orange);">
-          <div class="project-top">
-            <div class="project-icon">&#x1F514;</div>
-            <span class="project-lang lang-cpp">C++</span>
-          </div>
-          <h3>Doorbell Hack</h3>
-          <p>ESP8266 HomeKit doorbell hack. Custom firmware to integrate a traditional indoor doorbell unit with Apple HomeKit.</p>
-          <div class="project-footer">
-            <span>
-              <svg><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              IoT / Hardware
             </span>
           </div>
         </a>
@@ -1192,12 +1166,10 @@
 
     const repoIcons = {
       'Graft': '\u{1F500}',
-      'GourmetClient.MAUI': '\u{1F37D}\uFE0F',
-      'disk-analyzer': '\u{1F4CA}',
+      'GourmetClient': '\u{1F37D}\uFE0F',
+      'SparkShare': '\u{26A1}',
       'EasyLogger': '\u{1F4DD}',
       'syslog2csv': '\u{1F4C4}',
-      'Doorbell_Hack_IndoorUnit': '\u{1F514}',
-      'SparkShare': '\u{26A1}',
     };
 
     function timeAgo(dateStr) {
