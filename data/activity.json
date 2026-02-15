@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-02-14T00:51:14.433865+00:00",
+  "generatedAt": "2026-02-15T00:56:31.054485+00:00",
   "repos": [
     {
       "fullName": "radaiko/GourmetClient",
       "name": "GourmetClient",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 79,
-      "lastActivity": "2026-02-13T05:47:03Z"
+      "commits": 82,
+      "lastActivity": "2026-02-14T07:43:53Z"
     },
     {
       "fullName": "radaiko/Graft",
@@ -30,8 +30,8 @@
       "name": "radaiko.github.io",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 8,
-      "lastActivity": "2026-02-12T18:49:13Z"
+      "commits": 9,
+      "lastActivity": "2026-02-14T06:49:15Z"
     },
     {
       "fullName": "radaiko/DevCom",
@@ -70,8 +70,8 @@
       "name": "OwlSight",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 2,
-      "lastActivity": "2026-02-09T20:56:28Z"
+      "commits": 3,
+      "lastActivity": "2026-02-14T06:49:30Z"
     },
     {
       "fullName": "radaiko/SparkShareV2",
@@ -82,18 +82,258 @@
       "lastActivity": "2026-02-13T19:27:29Z"
     },
     {
+      "fullName": "radaiko/arsolution.openhab",
+      "name": "arsolution.openhab",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:53:37Z"
+    },
+    {
+      "fullName": "radaiko/AssistPack",
+      "name": "AssistPack",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:50:06Z"
+    },
+    {
+      "fullName": "radaiko/Calculator",
+      "name": "Calculator",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:53:25Z"
+    },
+    {
+      "fullName": "radaiko/ContainerDeck",
+      "name": "ContainerDeck",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:52:25Z"
+    },
+    {
+      "fullName": "radaiko/DockerPilot",
+      "name": "DockerPilot",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:52:39Z"
+    },
+    {
+      "fullName": "radaiko/EbookDownloader",
+      "name": "EbookDownloader",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:52:57Z"
+    },
+    {
       "fullName": "radaiko/EvergineDemo",
       "name": "EvergineDemo",
       "owner": "radaiko",
       "isOwn": true,
       "commits": 1,
       "lastActivity": "2025-12-06T19:59:28Z"
+    },
+    {
+      "fullName": "radaiko/Exploronaut",
+      "name": "Exploronaut",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:49:58Z"
+    },
+    {
+      "fullName": "radaiko/fisu",
+      "name": "fisu",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:49:22Z"
+    },
+    {
+      "fullName": "radaiko/FlutterGameTraining",
+      "name": "FlutterGameTraining",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:52:10Z"
+    },
+    {
+      "fullName": "radaiko/FocusFlow",
+      "name": "FocusFlow",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:52:49Z"
+    },
+    {
+      "fullName": "radaiko/GenericQueryLanguage",
+      "name": "GenericQueryLanguage",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:53:03Z"
+    },
+    {
+      "fullName": "radaiko/GrpcDemo",
+      "name": "GrpcDemo",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:52:32Z"
+    },
+    {
+      "fullName": "radaiko/HMManager",
+      "name": "HMManager",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:54:38Z"
+    },
+    {
+      "fullName": "radaiko/home-heat-control",
+      "name": "home-heat-control",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:53:44Z"
+    },
+    {
+      "fullName": "radaiko/LevelDB-Viewer",
+      "name": "LevelDB-Viewer",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:49:51Z"
+    },
+    {
+      "fullName": "radaiko/Money-Manager",
+      "name": "Money-Manager",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:49:39Z"
+    },
+    {
+      "fullName": "radaiko/MqttAtmo",
+      "name": "MqttAtmo",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:53:31Z"
+    },
+    {
+      "fullName": "radaiko/PAssistant",
+      "name": "PAssistant",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:50:53Z"
+    },
+    {
+      "fullName": "radaiko/PassSync",
+      "name": "PassSync",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:50:38Z"
+    },
+    {
+      "fullName": "radaiko/preisjaeger_searcher",
+      "name": "preisjaeger_searcher",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:54:45Z"
+    },
+    {
+      "fullName": "radaiko/PuzzleGame",
+      "name": "PuzzleGame",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:52:04Z"
+    },
+    {
+      "fullName": "radaiko/QIDI-XPRO",
+      "name": "QIDI-XPRO",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:53:10Z"
+    },
+    {
+      "fullName": "radaiko/Rage",
+      "name": "Rage",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:53:51Z"
+    },
+    {
+      "fullName": "radaiko/ReadRiser",
+      "name": "ReadRiser",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:50:19Z"
+    },
+    {
+      "fullName": "radaiko/RepoKraken",
+      "name": "RepoKraken",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:50:12Z"
+    },
+    {
+      "fullName": "radaiko/RepoManager",
+      "name": "RepoManager",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:52:15Z"
+    },
+    {
+      "fullName": "radaiko/RepoManagerTest",
+      "name": "RepoManagerTest",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:50:29Z"
+    },
+    {
+      "fullName": "radaiko/Snippets",
+      "name": "Snippets",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:50:46Z"
+    },
+    {
+      "fullName": "radaiko/Voron_V2.4_LDO_Config",
+      "name": "Voron_V2.4_LDO_Config",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:53:19Z"
+    },
+    {
+      "fullName": "radaiko/wobo",
+      "name": "wobo",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-02-14T06:49:45Z"
     }
   ],
   "weeklyCommits": [
     0,
-    13,
-    5,
+    14,
+    4,
     3,
     3,
     0,
@@ -101,16 +341,16 @@
     0,
     0,
     7,
-    3,
-    139
+    23,
+    154
   ],
-  "totalCommits": 173,
+  "totalCommits": 208,
   "activeWeeks": 7,
   "pages": [
     {
       "name": "GourmetClient",
       "url": "https://radaiko.github.io/GourmetClient/",
-      "description": "",
+      "description": "Cross-platform cafeteria menu ordering app built with Expo and Tauri",
       "language": "TypeScript"
     },
     {
@@ -122,7 +362,7 @@
     {
       "name": "OwlSight",
       "url": "https://radaiko.github.io/OwlSight/",
-      "description": "AI Code Review",
+      "description": "AI-powered code review CLI tool for .NET",
       "language": "C#"
     }
   ]
