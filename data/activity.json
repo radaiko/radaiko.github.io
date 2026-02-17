@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-02-16T00:53:52.193941+00:00",
+  "generatedAt": "2026-02-17T00:53:11.315687+00:00",
   "repos": [
     {
-      "fullName": "radaiko/GourmetClient",
-      "name": "GourmetClient",
+      "fullName": "radaiko/SnackPilot",
+      "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 82,
-      "lastActivity": "2026-02-14T07:43:53Z"
+      "commits": 93,
+      "lastActivity": "2026-02-16T22:22:56Z"
     },
     {
       "fullName": "radaiko/Graft",
@@ -339,8 +339,8 @@
     }
   ],
   "weeklyCommits": [
-    0,
-    18,
+    4,
+    14,
     0,
     3,
     3,
@@ -349,18 +349,12 @@
     0,
     0,
     7,
-    47,
-    135
+    59,
+    134
   ],
-  "totalCommits": 213,
-  "activeWeeks": 6,
+  "totalCommits": 224,
+  "activeWeeks": 7,
   "pages": [
-    {
-      "name": "GourmetClient",
-      "url": "https://radaiko.github.io/GourmetClient/",
-      "description": "Cross-platform cafeteria menu ordering app built with Expo and Tauri",
-      "language": "TypeScript"
-    },
     {
       "name": "Graft",
       "url": "https://radaiko.github.io/Graft/",
@@ -372,6 +366,12 @@
       "url": "https://radaiko.github.io/OwlSight/",
       "description": "AI-powered code review CLI tool for .NET",
       "language": "C#"
+    },
+    {
+      "name": "SnackPilot",
+      "url": "https://radaiko.github.io/SnackPilot/",
+      "description": "Cross-platform cafeteria menu ordering app built with Expo and Tauri",
+      "language": "TypeScript"
     }
   ]
 }
