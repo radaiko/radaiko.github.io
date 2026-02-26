@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-02-25T00:55:38.511913+00:00",
+  "generatedAt": "2026-02-26T00:50:30.874412+00:00",
   "repos": [
     {
       "fullName": "radaiko/SnackPilot",
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 140,
-      "lastActivity": "2026-02-24T21:37:43Z"
+      "commits": 153,
+      "lastActivity": "2026-02-25T22:19:35Z"
     },
     {
       "fullName": "radaiko/Nook",
       "name": "Nook",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 58,
-      "lastActivity": "2026-02-24T21:35:13Z"
+      "commits": 74,
+      "lastActivity": "2026-02-25T21:01:48Z"
     },
     {
       "fullName": "radaiko/Graft",
@@ -40,14 +40,6 @@
       "isOwn": true,
       "commits": 7,
       "lastActivity": "2026-01-29T18:06:46Z"
-    },
-    {
-      "fullName": "radaiko/EasyLogger",
-      "name": "EasyLogger",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 7,
-      "lastActivity": "2025-12-03T21:23:24Z"
     },
     {
       "fullName": "radaiko/SparkShare",
@@ -347,21 +339,21 @@
     }
   ],
   "weeklyCommits": [
-    12,
+    5,
     0,
     6,
     0,
     0,
     0,
     0,
-    0,
-    7,
-    65,
-    136,
-    97
+    4,
+    3,
+    83,
+    137,
+    107
   ],
-  "totalCommits": 323,
-  "activeWeeks": 6,
+  "totalCommits": 345,
+  "activeWeeks": 7,
   "pages": [
     {
       "name": "Graft",
