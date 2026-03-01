@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-02-28T00:46:44.759335+00:00",
+  "generatedAt": "2026-03-01T00:58:48.251895+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
       "name": "Nook",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 166,
-      "lastActivity": "2026-02-27T21:15:06Z"
+      "commits": 236,
+      "lastActivity": "2026-02-28T22:34:04Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -136,14 +136,6 @@
       "isOwn": true,
       "commits": 1,
       "lastActivity": "2026-02-14T06:52:57Z"
-    },
-    {
-      "fullName": "radaiko/EvergineDemo",
-      "name": "EvergineDemo",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 1,
-      "lastActivity": "2025-12-06T19:59:28Z"
     },
     {
       "fullName": "radaiko/Exploronaut",
@@ -339,7 +331,7 @@
     }
   ],
   "weeklyCommits": [
-    5,
+    4,
     3,
     3,
     0,
@@ -347,12 +339,12 @@
     0,
     0,
     7,
-    3,
-    139,
-    97,
-    184
+    23,
+    154,
+    106,
+    210
   ],
-  "totalCommits": 441,
+  "totalCommits": 510,
   "activeWeeks": 8,
   "pages": [
     {
