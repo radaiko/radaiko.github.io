@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-03-01T00:58:48.251895+00:00",
+  "generatedAt": "2026-03-02T00:52:50.040205+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
       "name": "Nook",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 236,
-      "lastActivity": "2026-02-28T22:34:04Z"
+      "commits": 250,
+      "lastActivity": "2026-03-01T07:01:38Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -56,14 +56,6 @@
       "isOwn": true,
       "commits": 5,
       "lastActivity": "2026-02-15T20:05:37Z"
-    },
-    {
-      "fullName": "radaiko/Navigator",
-      "name": "Navigator",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 4,
-      "lastActivity": "2025-12-07T16:38:32Z"
     },
     {
       "fullName": "radaiko/disk-analyzer",
@@ -331,7 +323,7 @@
     }
   ],
   "weeklyCommits": [
-    4,
+    0,
     3,
     3,
     0,
@@ -339,13 +331,13 @@
     0,
     0,
     7,
-    23,
-    154,
-    106,
-    210
+    47,
+    135,
+    101,
+    224
   ],
-  "totalCommits": 510,
-  "activeWeeks": 8,
+  "totalCommits": 520,
+  "activeWeeks": 7,
   "pages": [
     {
       "name": "Graft",
