@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-03-13T00:51:52.024969+00:00",
+  "generatedAt": "2026-03-14T00:50:05.872247+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
       "name": "Nook",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 433,
-      "lastActivity": "2026-03-12T21:24:47Z"
+      "commits": 442,
+      "lastActivity": "2026-03-13T20:01:35Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -42,14 +42,6 @@
       "lastActivity": "2026-01-29T18:06:46Z"
     },
     {
-      "fullName": "radaiko/SparkShare",
-      "name": "SparkShare",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 6,
-      "lastActivity": "2026-02-05T16:45:20Z"
-    },
-    {
       "fullName": "radaiko/Aura",
       "name": "Aura",
       "owner": "radaiko",
@@ -72,6 +64,14 @@
       "isOwn": true,
       "commits": 3,
       "lastActivity": "2026-02-14T06:49:30Z"
+    },
+    {
+      "fullName": "radaiko/SparkShare",
+      "name": "SparkShare",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 3,
+      "lastActivity": "2026-02-05T16:45:20Z"
     },
     {
       "fullName": "radaiko/nook-app",
@@ -347,20 +347,20 @@
     }
   ],
   "weeklyCommits": [
-    6,
+    3,
     0,
     0,
     0,
     0,
     7,
     3,
-    135,
-    100,
-    112,
-    260,
-    98
+    139,
+    97,
+    184,
+    240,
+    54
   ],
-  "totalCommits": 721,
+  "totalCommits": 727,
   "activeWeeks": 8,
   "pages": [
     {
