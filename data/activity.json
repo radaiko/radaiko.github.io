@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14T01:04:19.543059+00:00",
+  "generatedAt": "2026-04-15T01:04:44.321637+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
@@ -14,8 +14,8 @@
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 176,
-      "lastActivity": "2026-04-13T18:45:15Z"
+      "commits": 178,
+      "lastActivity": "2026-04-14T16:04:42Z"
     },
     {
       "fullName": "radaiko/shared-homeassistant",
@@ -48,6 +48,14 @@
       "isOwn": true,
       "commits": 9,
       "lastActivity": "2026-02-14T06:49:15Z"
+    },
+    {
+      "fullName": "radaiko/govee2mqtt",
+      "name": "govee2mqtt",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 8,
+      "lastActivity": "2026-04-14T19:45:56Z"
     },
     {
       "fullName": "radaiko/DevCom",
@@ -357,18 +365,18 @@
   "weeklyCommits": [
     0,
     7,
-    59,
-    134,
-    90,
-    226,
-    168,
     65,
-    61,
-    27,
+    136,
+    97,
+    226,
+    161,
+    57,
+    63,
+    25,
     22,
-    1
+    11
   ],
-  "totalCommits": 860,
+  "totalCommits": 870,
   "activeWeeks": 11,
   "pages": [
     {
