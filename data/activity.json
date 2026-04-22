@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-04-21T01:04:21.450049+00:00",
+  "generatedAt": "2026-04-22T01:01:14.798982+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
       "name": "Nook",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 487,
-      "lastActivity": "2026-03-25T15:39:34Z"
+      "commits": 489,
+      "lastActivity": "2026-04-21T18:36:45Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -58,20 +58,20 @@
       "lastActivity": "2026-04-14T19:45:56Z"
     },
     {
-      "fullName": "radaiko/DevCom",
-      "name": "DevCom",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 7,
-      "lastActivity": "2026-01-29T18:06:46Z"
-    },
-    {
       "fullName": "radaiko/Aura",
       "name": "Aura",
       "owner": "radaiko",
       "isOwn": true,
       "commits": 5,
       "lastActivity": "2026-02-15T20:05:37Z"
+    },
+    {
+      "fullName": "radaiko/DevCom",
+      "name": "DevCom",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 3,
+      "lastActivity": "2026-01-29T18:06:46Z"
     },
     {
       "fullName": "radaiko/OwlSight",
@@ -363,20 +363,20 @@
     }
   ],
   "weeklyCommits": [
-    7,
-    59,
-    134,
-    90,
-    226,
-    168,
+    3,
     65,
-    61,
-    27,
+    136,
+    97,
+    226,
+    161,
+    57,
+    63,
+    25,
     22,
-    1,
-    11
+    11,
+    3
   ],
-  "totalCommits": 871,
+  "totalCommits": 869,
   "activeWeeks": 12,
   "pages": [
     {
