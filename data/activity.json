@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T01:01:14.798982+00:00",
+  "generatedAt": "2026-04-23T01:06:41.892541+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
@@ -64,14 +64,6 @@
       "isOwn": true,
       "commits": 5,
       "lastActivity": "2026-02-15T20:05:37Z"
-    },
-    {
-      "fullName": "radaiko/DevCom",
-      "name": "DevCom",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 3,
-      "lastActivity": "2026-01-29T18:06:46Z"
     },
     {
       "fullName": "radaiko/OwlSight",
@@ -144,6 +136,14 @@
       "isOwn": true,
       "commits": 1,
       "lastActivity": "2026-02-14T06:52:25Z"
+    },
+    {
+      "fullName": "radaiko/DevCom",
+      "name": "DevCom",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-01-29T18:06:46Z"
     },
     {
       "fullName": "radaiko/DockerPilot",
@@ -363,20 +363,20 @@
     }
   ],
   "weeklyCommits": [
+    1,
+    83,
+    137,
+    107,
+    233,
+    135,
+    47,
+    85,
     3,
-    65,
-    136,
-    97,
-    226,
-    161,
-    57,
-    63,
-    25,
     22,
     11,
     3
   ],
-  "totalCommits": 869,
+  "totalCommits": 867,
   "activeWeeks": 12,
   "pages": [
     {
