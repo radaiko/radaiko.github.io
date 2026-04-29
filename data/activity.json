@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-28T01:11:18.803683+00:00",
+  "generatedAt": "2026-04-29T01:12:04.785595+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
@@ -88,6 +88,14 @@
       "isOwn": true,
       "commits": 3,
       "lastActivity": "2026-02-05T16:45:20Z"
+    },
+    {
+      "fullName": "radaiko/nixos-emqx",
+      "name": "nixos-emqx",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 2,
+      "lastActivity": "2026-04-28T19:53:22Z"
     },
     {
       "fullName": "radaiko/nook-app",
@@ -363,20 +371,20 @@
     }
   ],
   "weeklyCommits": [
-    59,
-    134,
-    90,
-    226,
-    168,
     65,
-    61,
-    27,
+    136,
+    97,
+    226,
+    161,
+    57,
+    63,
+    25,
     22,
-    1,
     11,
+    3,
     97
   ],
-  "totalCommits": 961,
+  "totalCommits": 963,
   "activeWeeks": 12,
   "pages": [
     {
