@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-06T01:07:40.145708+00:00",
+  "generatedAt": "2026-05-07T01:11:48.853722+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
@@ -14,7 +14,7 @@
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 172,
+      "commits": 142,
       "lastActivity": "2026-04-14T16:04:42Z"
     },
     {
@@ -38,8 +38,8 @@
       "name": "wagnis",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 34,
-      "lastActivity": "2026-05-05T22:00:05Z"
+      "commits": 56,
+      "lastActivity": "2026-05-06T15:58:27Z"
     },
     {
       "fullName": "radaiko/ha2mqtt",
@@ -371,20 +371,20 @@
     }
   ],
   "weeklyCommits": [
-    136,
-    97,
-    226,
-    161,
-    57,
-    63,
-    25,
+    125,
+    107,
+    233,
+    135,
+    47,
+    85,
+    3,
     22,
     11,
     3,
-    97,
-    39
+    98,
+    60
   ],
-  "totalCommits": 937,
+  "totalCommits": 929,
   "activeWeeks": 12,
   "pages": [
     {
