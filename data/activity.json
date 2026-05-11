@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10T01:16:59.249464+00:00",
+  "generatedAt": "2026-05-11T01:17:35.072915+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
@@ -14,8 +14,8 @@
       "name": "owned",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 281,
-      "lastActivity": "2026-05-09T20:16:07Z"
+      "commits": 297,
+      "lastActivity": "2026-05-10T19:42:34Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -66,14 +66,6 @@
       "lastActivity": "2026-04-14T19:45:56Z"
     },
     {
-      "fullName": "radaiko/Aura",
-      "name": "Aura",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 5,
-      "lastActivity": "2026-02-15T20:05:37Z"
-    },
-    {
       "fullName": "radaiko/nixos-emqx",
       "name": "nixos-emqx",
       "owner": "radaiko",
@@ -107,20 +99,20 @@
     }
   ],
   "weeklyCommits": [
-    106,
-    210,
-    180,
+    101,
+    226,
+    165,
     68,
-    55,
-    34,
-    0,
+    61,
+    27,
     22,
+    0,
     12,
     97,
-    4,
-    335
+    7,
+    348
   ],
-  "totalCommits": 1123,
+  "totalCommits": 1134,
   "activeWeeks": 11,
   "pages": [
     {
