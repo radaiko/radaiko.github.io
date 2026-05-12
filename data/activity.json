@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T01:17:35.072915+00:00",
+  "generatedAt": "2026-05-12T01:11:12.848748+00:00",
   "repos": [
     {
       "fullName": "radaiko/Nook",
@@ -14,16 +14,8 @@
       "name": "owned",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 297,
-      "lastActivity": "2026-05-10T19:42:34Z"
-    },
-    {
-      "fullName": "radaiko/SnackPilot",
-      "name": "SnackPilot",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 96,
-      "lastActivity": "2026-04-14T16:04:42Z"
+      "commits": 319,
+      "lastActivity": "2026-05-11T19:34:44Z"
     },
     {
       "fullName": "radaiko/Orbital",
@@ -32,6 +24,14 @@
       "isOwn": true,
       "commits": 95,
       "lastActivity": "2026-04-23T17:33:18Z"
+    },
+    {
+      "fullName": "radaiko/SnackPilot",
+      "name": "SnackPilot",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 85,
+      "lastActivity": "2026-04-14T16:04:42Z"
     },
     {
       "fullName": "radaiko/shared-homeassistant",
@@ -99,21 +99,21 @@
     }
   ],
   "weeklyCommits": [
-    101,
+    90,
     226,
-    165,
-    68,
+    168,
+    65,
     61,
     27,
     22,
-    0,
-    12,
+    1,
+    11,
     97,
-    7,
-    348
+    13,
+    364
   ],
-  "totalCommits": 1134,
-  "activeWeeks": 11,
+  "totalCommits": 1145,
+  "activeWeeks": 12,
   "pages": [
     {
       "name": "Graft",
