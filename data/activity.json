@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-05-27T01:23:36.159754+00:00",
+  "generatedAt": "2026-05-28T01:15:30.498707+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
       "name": "owned",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 1083,
-      "lastActivity": "2026-05-25T08:36:00Z"
+      "commits": 1128,
+      "lastActivity": "2026-05-27T19:56:04Z"
     },
     {
       "fullName": "radaiko/Nook",
       "name": "Nook",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 225,
+      "commits": 189,
       "lastActivity": "2026-04-21T18:36:45Z"
     },
     {
@@ -107,20 +107,20 @@
     }
   ],
   "weeklyCommits": [
-    161,
-    57,
-    63,
-    25,
+    135,
+    47,
+    85,
+    3,
     22,
     11,
     3,
-    97,
-    39,
-    366,
-    593,
-    147
+    98,
+    75,
+    398,
+    573,
+    143
   ],
-  "totalCommits": 1584,
+  "totalCommits": 1593,
   "activeWeeks": 12,
   "pages": [
     {
