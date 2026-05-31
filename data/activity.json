@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T01:19:05.666138+00:00",
+  "generatedAt": "2026-05-31T01:26:55.260175+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -22,7 +22,7 @@
       "name": "Nook",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 91,
+      "commits": 84,
       "lastActivity": "2026-04-21T18:36:45Z"
     },
     {
@@ -74,14 +74,6 @@
       "lastActivity": "2026-04-28T19:53:22Z"
     },
     {
-      "fullName": "radaiko/nook-app",
-      "name": "nook-app",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 2,
-      "lastActivity": "2026-03-07T17:50:58Z"
-    },
-    {
       "fullName": "radaiko/sab2torbox",
       "name": "sab2torbox",
       "owner": "radaiko",
@@ -91,20 +83,20 @@
     }
   ],
   "weeklyCommits": [
-    73,
-    5,
-    88,
+    68,
+    55,
+    34,
     0,
     22,
     12,
     97,
-    3,
-    294,
-    382,
-    388,
-    132
+    4,
+    335,
+    350,
+    418,
+    92
   ],
-  "totalCommits": 1496,
+  "totalCommits": 1487,
   "activeWeeks": 11,
   "pages": [
     {
