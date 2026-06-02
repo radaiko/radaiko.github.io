@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-01T01:30:40.116835+00:00",
+  "generatedAt": "2026-06-02T01:28:51.070673+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -54,7 +54,7 @@
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 19,
+      "commits": 16,
       "lastActivity": "2026-05-14T11:05:44Z"
     },
     {
@@ -83,21 +83,21 @@
     }
   ],
   "weeklyCommits": [
-    68,
+    65,
     61,
     27,
     22,
-    0,
-    12,
+    1,
+    11,
     97,
-    7,
-    348,
-    457,
-    319,
-    68
+    13,
+    364,
+    536,
+    234,
+    52
   ],
-  "totalCommits": 1486,
-  "activeWeeks": 11,
+  "totalCommits": 1483,
+  "activeWeeks": 12,
   "pages": [
     {
       "name": "Graft",
