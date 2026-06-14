@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-13T01:27:14.433981+00:00",
+  "generatedAt": "2026-06-14T01:31:23.952695+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -16,14 +16,6 @@
       "isOwn": true,
       "commits": 95,
       "lastActivity": "2026-04-23T17:33:18Z"
-    },
-    {
-      "fullName": "radaiko/shared-homeassistant",
-      "name": "shared-homeassistant",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 64,
-      "lastActivity": "2026-04-17T11:38:23Z"
     },
     {
       "fullName": "radaiko/wagnis",
@@ -66,6 +58,14 @@
       "lastActivity": "2026-04-14T19:45:56Z"
     },
     {
+      "fullName": "radaiko/shared-homeassistant",
+      "name": "shared-homeassistant",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 8,
+      "lastActivity": "2026-04-17T11:38:23Z"
+    },
+    {
       "fullName": "radaiko/nixos-emqx",
       "name": "nixos-emqx",
       "owner": "radaiko",
@@ -83,20 +83,20 @@
     }
   ],
   "weeklyCommits": [
-    88,
+    32,
     0,
     22,
     12,
     97,
-    3,
-    294,
-    382,
-    388,
-    132,
+    4,
+    335,
+    350,
+    418,
+    92,
     0,
     0
   ],
-  "totalCommits": 1418,
+  "totalCommits": 1362,
   "activeWeeks": 9,
   "pages": [
     {
