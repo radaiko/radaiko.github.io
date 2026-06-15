@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T01:31:23.952695+00:00",
+  "generatedAt": "2026-06-15T01:33:10.031349+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -62,7 +62,7 @@
       "name": "shared-homeassistant",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 8,
+      "commits": 3,
       "lastActivity": "2026-04-17T11:38:23Z"
     },
     {
@@ -83,20 +83,20 @@
     }
   ],
   "weeklyCommits": [
-    32,
-    0,
+    27,
     22,
+    0,
     12,
     97,
-    4,
-    335,
-    350,
-    418,
-    92,
+    7,
+    348,
+    457,
+    319,
+    68,
     0,
     0
   ],
-  "totalCommits": 1362,
+  "totalCommits": 1357,
   "activeWeeks": 9,
   "pages": [
     {
