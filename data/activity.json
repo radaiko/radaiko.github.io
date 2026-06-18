@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T01:32:36.235500+00:00",
+  "generatedAt": "2026-06-18T01:29:36.762397+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -34,14 +34,6 @@
       "lastActivity": "2026-04-05T20:08:25Z"
     },
     {
-      "fullName": "radaiko/Nook",
-      "name": "Nook",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 22,
-      "lastActivity": "2026-04-21T18:36:45Z"
-    },
-    {
       "fullName": "radaiko/SnackPilot",
       "name": "SnackPilot",
       "owner": "radaiko",
@@ -58,14 +50,6 @@
       "lastActivity": "2026-04-14T19:45:56Z"
     },
     {
-      "fullName": "radaiko/shared-homeassistant",
-      "name": "shared-homeassistant",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 3,
-      "lastActivity": "2026-04-17T11:38:23Z"
-    },
-    {
       "fullName": "radaiko/nixos-emqx",
       "name": "nixos-emqx",
       "owner": "radaiko",
@@ -74,29 +58,45 @@
       "lastActivity": "2026-04-28T19:53:22Z"
     },
     {
+      "fullName": "radaiko/Nook",
+      "name": "Nook",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 2,
+      "lastActivity": "2026-04-21T18:36:45Z"
+    },
+    {
       "fullName": "radaiko/sab2torbox",
       "name": "sab2torbox",
       "owner": "radaiko",
       "isOwn": true,
       "commits": 1,
       "lastActivity": "2026-05-16T12:21:48Z"
+    },
+    {
+      "fullName": "radaiko/shared-homeassistant",
+      "name": "shared-homeassistant",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-04-17T11:38:23Z"
     }
   ],
   "weeklyCommits": [
-    25,
+    3,
     22,
     11,
     3,
-    97,
-    39,
-    366,
-    593,
-    147,
-    52,
+    98,
+    75,
+    398,
+    573,
+    143,
+    7,
     0,
     0
   ],
-  "totalCommits": 1355,
+  "totalCommits": 1333,
   "activeWeeks": 10,
   "pages": [
     {
