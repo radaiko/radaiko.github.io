@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T01:25:30.704613+00:00",
+  "generatedAt": "2026-06-29T01:26:44.029404+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -14,8 +14,8 @@
       "name": "Boxarr",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 170,
-      "lastActivity": "2026-06-26T14:04:57Z"
+      "commits": 173,
+      "lastActivity": "2026-06-28T06:19:48Z"
     },
     {
       "fullName": "radaiko/Orbital",
@@ -32,14 +32,6 @@
       "isOwn": true,
       "commits": 56,
       "lastActivity": "2026-05-06T15:58:27Z"
-    },
-    {
-      "fullName": "radaiko/ha2mqtt",
-      "name": "ha2mqtt",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 22,
-      "lastActivity": "2026-04-05T20:08:25Z"
     },
     {
       "fullName": "radaiko/govee2mqtt",
@@ -91,21 +83,21 @@
     }
   ],
   "weeklyCommits": [
-    22,
+    0,
     12,
     97,
-    4,
-    335,
-    350,
-    418,
-    92,
+    7,
+    348,
+    457,
+    319,
+    68,
     0,
     0,
-    45,
-    125
+    101,
+    72
   ],
-  "totalCommits": 1500,
-  "activeWeeks": 10,
+  "totalCommits": 1481,
+  "activeWeeks": 9,
   "pages": [
     {
       "name": "Graft",
