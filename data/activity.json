@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T01:20:37.062596+00:00",
+  "generatedAt": "2026-07-01T01:26:43.758715+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -38,8 +38,8 @@
       "name": "Turnpoint",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 26,
-      "lastActivity": "2026-06-29T20:45:57Z"
+      "commits": 33,
+      "lastActivity": "2026-06-30T17:46:52Z"
     },
     {
       "fullName": "radaiko/govee2mqtt",
@@ -91,20 +91,20 @@
     }
   ],
   "weeklyCommits": [
-    1,
     11,
+    3,
     97,
-    13,
-    364,
-    536,
-    234,
+    39,
+    366,
+    593,
+    147,
     52,
     0,
     0,
-    119,
-    80
+    132,
+    74
   ],
-  "totalCommits": 1507,
+  "totalCommits": 1514,
   "activeWeeks": 10,
   "pages": [
     {
