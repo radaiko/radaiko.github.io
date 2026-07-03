@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T01:20:29.957363+00:00",
+  "generatedAt": "2026-07-03T04:13:06.297847+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -42,20 +42,20 @@
       "lastActivity": "2026-06-30T17:46:52Z"
     },
     {
+      "fullName": "radaiko/SnackPilot",
+      "name": "SnackPilot",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 12,
+      "lastActivity": "2026-07-02T09:36:37Z"
+    },
+    {
       "fullName": "radaiko/govee2mqtt",
       "name": "govee2mqtt",
       "owner": "radaiko",
       "isOwn": true,
       "commits": 8,
       "lastActivity": "2026-04-14T19:45:56Z"
-    },
-    {
-      "fullName": "radaiko/SnackPilot",
-      "name": "SnackPilot",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 8,
-      "lastActivity": "2026-05-14T11:05:44Z"
     },
     {
       "fullName": "radaiko/nixos-emqx",
@@ -92,20 +92,20 @@
   ],
   "weeklyCommits": [
     11,
-    3,
     98,
-    75,
-    398,
-    573,
+    3,
     143,
-    7,
+    426,
+    481,
+    146,
     0,
     0,
-    144,
-    62
+    0,
+    149,
+    61
   ],
-  "totalCommits": 1514,
-  "activeWeeks": 10,
+  "totalCommits": 1518,
+  "activeWeeks": 9,
   "pages": [
     {
       "name": "Graft",
