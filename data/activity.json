@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T04:27:58.263112+00:00",
+  "generatedAt": "2026-07-08T03:50:05.837262+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -46,16 +46,8 @@
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 11,
+      "commits": 9,
       "lastActivity": "2026-07-02T09:36:37Z"
-    },
-    {
-      "fullName": "radaiko/govee2mqtt",
-      "name": "govee2mqtt",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 8,
-      "lastActivity": "2026-04-14T19:45:56Z"
     },
     {
       "fullName": "radaiko/nixos-emqx",
@@ -91,20 +83,20 @@
     }
   ],
   "weeklyCommits": [
-    11,
+    3,
     97,
-    13,
-    364,
-    536,
-    234,
+    39,
+    366,
+    593,
+    147,
     52,
     0,
     0,
-    119,
-    82,
-    9
+    132,
+    74,
+    4
   ],
-  "totalCommits": 1517,
+  "totalCommits": 1507,
   "activeWeeks": 10,
   "pages": [
     {
