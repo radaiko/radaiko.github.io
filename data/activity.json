@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T03:40:09.109662+00:00",
+  "generatedAt": "2026-07-15T03:40:29.282444+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -58,14 +58,6 @@
       "lastActivity": "2026-04-28T19:53:22Z"
     },
     {
-      "fullName": "radaiko/Nook",
-      "name": "Nook",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 2,
-      "lastActivity": "2026-04-21T18:36:45Z"
-    },
-    {
       "fullName": "radaiko/sab2torbox",
       "name": "sab2torbox",
       "owner": "radaiko",
@@ -76,19 +68,19 @@
   ],
   "weeklyCommits": [
     97,
-    13,
-    364,
-    536,
-    234,
+    39,
+    366,
+    593,
+    147,
     52,
     0,
     0,
-    119,
-    81,
-    10,
+    132,
+    74,
+    4,
     1
   ],
-  "totalCommits": 1507,
+  "totalCommits": 1505,
   "activeWeeks": 10,
   "pages": [
     {
