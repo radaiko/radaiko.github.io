@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T04:00:03.763032+00:00",
+  "generatedAt": "2026-07-20T04:10:13.466677+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -42,6 +42,14 @@
       "lastActivity": "2026-06-30T17:46:52Z"
     },
     {
+      "fullName": "radaiko/Fleetarr",
+      "name": "Fleetarr",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 26,
+      "lastActivity": "2026-07-19T22:40:24Z"
+    },
+    {
       "fullName": "radaiko/nixos-emqx",
       "name": "nixos-emqx",
       "owner": "radaiko",
@@ -59,22 +67,28 @@
     }
   ],
   "weeklyCommits": [
-    4,
-    335,
-    345,
-    418,
-    92,
+    7,
+    348,
+    452,
+    319,
+    68,
     0,
     0,
-    45,
-    125,
-    36,
+    103,
+    70,
+    33,
     80,
-    44
+    70
   ],
-  "totalCommits": 1524,
+  "totalCommits": 1550,
   "activeWeeks": 10,
   "pages": [
+    {
+      "name": "Fleetarr",
+      "url": "https://radaiko.github.io/Fleetarr/",
+      "description": "",
+      "language": "Swift"
+    },
     {
       "name": "Graft",
       "url": "https://radaiko.github.io/Graft/",
