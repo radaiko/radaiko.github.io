@@ -188,8 +188,8 @@ def main():
             if 0 <= week_index < WEEKS:
                 weekly_commits[WEEKS - 1 - week_index] += commit_count
 
-    # Sort repos by commit count descending
-    sorted_repos = sorted(repos.values(), key=lambda r: r["commits"], reverse=True)
+    # Sort repos by most recent activity descending
+    sorted_repos = sorted(repos.values(), key=lambda r: r["lastActivity"], reverse=True)
     total_commits = sum(weekly_commits)
     active_weeks = sum(1 for w in weekly_commits if w > 0)
 
