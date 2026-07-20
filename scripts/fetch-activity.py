@@ -30,6 +30,17 @@ def api_get(path, token):
         return json.loads(resp.read())
 
 
+def url_ok(url):
+    """True if the URL serves HTTP 200. Used to drop Pages sites that are
+    enabled on the repo but not actually deployed (they 404)."""
+    try:
+        req = Request(url, headers={"User-Agent": "radaiko-portfolio-check"})
+        with urlopen(req, timeout=10) as resp:
+            return resp.status == 200
+    except Exception:
+        return False
+
+
 def fetch_all_repos(token):
     """Fetch all repos accessible to the authenticated user (includes private)."""
     all_repos = []
@@ -193,8 +204,11 @@ def main():
     total_commits = sum(weekly_commits)
     active_weeks = sum(1 for w in weekly_commits if w > 0)
 
-    pages_sites.sort(key=lambda p: p["name"].lower())
     print(f"Found {len(pages_sites)} repos with GitHub Pages enabled")
+    # Drop sites that 404 (Pages enabled but nothing deployed)
+    pages_sites = [p for p in pages_sites if url_ok(p["url"])]
+    pages_sites.sort(key=lambda p: p["name"].lower())
+    print(f"{len(pages_sites)} Pages sites are actually reachable")
 
     output = {
         "generatedAt": now.isoformat(),

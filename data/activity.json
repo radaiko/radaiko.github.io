@@ -90,30 +90,6 @@
       "language": "Swift"
     },
     {
-      "name": "Graft",
-      "url": "https://radaiko.github.io/Graft/",
-      "description": "A CLI tool for managing stacked branches and git worktrees",
-      "language": "C#"
-    },
-    {
-      "name": "nook-app",
-      "url": "https://radaiko.github.io/nook-app/",
-      "description": "Nook \u2014 Where thoughts come to breathe. A markdown-first note app.",
-      "language": ""
-    },
-    {
-      "name": "Orbital",
-      "url": "https://radaiko.github.io/Orbital/",
-      "description": "",
-      "language": "C#"
-    },
-    {
-      "name": "OwlSight",
-      "url": "https://radaiko.github.io/OwlSight/",
-      "description": "AI-powered code review CLI tool for .NET",
-      "language": "C#"
-    },
-    {
       "name": "SnackPilot",
       "url": "https://radaiko.github.io/SnackPilot/",
       "description": "Native iOS & Android app for company cafeteria menu ordering & billing \u2014 shared Rust core (UniFFI) + SwiftUI/Compose.",
