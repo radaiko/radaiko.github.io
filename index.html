@@ -301,7 +301,8 @@
     .docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
     .docs-card { display: flex; align-items: center; gap: 13px; padding: 15px 17px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); text-decoration: none; color: inherit; transition: border-color 0.15s, background 0.15s; }
     .docs-card:hover { border-color: var(--accent); background: var(--accent-weak); }
-    .docs-icon { width: 38px; height: 38px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; border: 1px solid var(--rule-strong); border-radius: 7px; background: var(--elevated); }
+    .docs-icon { width: 38px; height: 38px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; border: 1px solid var(--rule-strong); border-radius: 7px; background: var(--elevated); overflow: hidden; }
+    .docs-icon img { width: 100%; height: 100%; object-fit: cover; }
     .docs-info { min-width: 0; }
     .docs-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .docs-desc { font-family: var(--mono); font-size: 11.5px; color: var(--faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -562,6 +563,11 @@
       'OwlSight': '\u{1F989}', 'GourmetClient': '\u{1F37D}️', 'SparkShare': '\u{26A1}',
       'EasyLogger': '\u{1F4DD}', 'syslog2csv': '\u{1F4C4}',
     };
+    // Real project icon images (same source as the Work cards) for repos that have one.
+    const projectIcons = {
+      'SnackPilot': 'https://raw.githubusercontent.com/radaiko/SnackPilot/main/assets/icons/icon-emerald.png',
+      'Fleetarr': 'https://raw.githubusercontent.com/radaiko/Fleetarr/main/docs/icon.png',
+    };
     let activityData = null;
 
     function timeAgo(dateStr) {
@@ -615,10 +621,14 @@
       if (pages.length) {
         grid.innerHTML = '';
         pages.forEach(p => {
-          const icon = repoIcons[p.name] || '\u{1F4D6}';
+          const emoji = repoIcons[p.name] || '\u{1F4D6}';
+          const url = projectIcons[p.name];
+          const iconInner = url
+            ? '<img src="' + url + '" alt="" onerror="this.parentNode.textContent=\'' + emoji + '\'">'
+            : emoji;
           const a = document.createElement('a');
           a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; a.className = 'docs-card';
-          a.innerHTML = '<div class="docs-icon">' + icon + '</div><div class="docs-info"><div class="docs-name">' + p.name + '</div><div class="docs-desc">' + (p.description || p.url) + '</div></div>';
+          a.innerHTML = '<div class="docs-icon">' + iconInner + '</div><div class="docs-info"><div class="docs-name">' + p.name + '</div><div class="docs-desc">' + (p.description || p.url) + '</div></div>';
           grid.appendChild(a);
         });
         document.getElementById('docs-count').textContent = pages.length + ' page' + (pages.length !== 1 ? 's' : '');
@@ -628,7 +638,7 @@
     }
 
     async function fetchFromStaticData() {
-      const r = await fetch('data/activity.json');
+      const r = await fetch('data/activity.json?t=' + Date.now(), { cache: 'no-store' });
       if (!r.ok) throw new Error('no static data');
       return r.json();
     }
