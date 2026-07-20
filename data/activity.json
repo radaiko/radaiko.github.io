@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T04:10:13.466677+00:00",
+  "generatedAt": "2026-07-20T18:18:21.389419+00:00",
   "repos": [
     {
       "fullName": "radaiko/owned",
@@ -46,8 +46,8 @@
       "name": "Fleetarr",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 26,
-      "lastActivity": "2026-07-19T22:40:24Z"
+      "commits": 29,
+      "lastActivity": "2026-07-20T17:52:11Z"
     },
     {
       "fullName": "radaiko/nixos-emqx",
@@ -68,19 +68,19 @@
   ],
   "weeklyCommits": [
     7,
-    348,
-    452,
-    319,
-    68,
+    361,
+    463,
+    311,
+    52,
     0,
     0,
-    103,
+    117,
     70,
-    33,
+    19,
     80,
-    70
+    73
   ],
-  "totalCommits": 1550,
+  "totalCommits": 1553,
   "activeWeeks": 10,
   "pages": [
     {
