@@ -1,112 +1,94 @@
 {
-  "generatedAt": "2026-02-12T18:32:07.433887+00:00",
+  "generatedAt": "2026-07-20T18:18:21.389419+00:00",
   "repos": [
     {
-      "fullName": "radaiko/GourmetClient",
-      "name": "GourmetClient",
+      "fullName": "radaiko/Fleetarr",
+      "name": "Fleetarr",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 64,
-      "lastActivity": "2026-02-12T18:31:52Z"
+      "commits": 29,
+      "lastActivity": "2026-07-20T17:52:11Z"
     },
     {
-      "fullName": "radaiko/radaiko.github.io",
-      "name": "radaiko.github.io",
+      "fullName": "radaiko/SnackPilot",
+      "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 7,
-      "lastActivity": "2026-02-12T18:30:35Z"
+      "commits": 123,
+      "lastActivity": "2026-07-18T22:06:42Z"
     },
     {
-      "fullName": "radaiko/OwlSight",
-      "name": "OwlSight",
+      "fullName": "radaiko/Boxarr",
+      "name": "Boxarr",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 174,
+      "lastActivity": "2026-07-10T17:03:46Z"
+    },
+    {
+      "fullName": "radaiko/Turnpoint",
+      "name": "Turnpoint",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 33,
+      "lastActivity": "2026-06-30T17:46:52Z"
+    },
+    {
+      "fullName": "radaiko/owned",
+      "name": "owned",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1135,
+      "lastActivity": "2026-05-28T15:48:39Z"
+    },
+    {
+      "fullName": "radaiko/sab2torbox",
+      "name": "sab2torbox",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 1,
+      "lastActivity": "2026-05-16T12:21:48Z"
+    },
+    {
+      "fullName": "radaiko/wagnis",
+      "name": "wagnis",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 56,
+      "lastActivity": "2026-05-06T15:58:27Z"
+    },
+    {
+      "fullName": "radaiko/nixos-emqx",
+      "name": "nixos-emqx",
       "owner": "radaiko",
       "isOwn": true,
       "commits": 2,
-      "lastActivity": "2026-02-09T20:56:28Z"
-    },
-    {
-      "fullName": "radaiko/Graft",
-      "name": "Graft",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 48,
-      "lastActivity": "2026-02-09T20:11:13Z"
-    },
-    {
-      "fullName": "radaiko/SparkShare",
-      "name": "SparkShare",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 6,
-      "lastActivity": "2026-02-05T16:45:20Z"
-    },
-    {
-      "fullName": "radaiko/DevCom",
-      "name": "DevCom",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 7,
-      "lastActivity": "2026-01-29T18:06:46Z"
-    },
-    {
-      "fullName": "radaiko/disk-analyzer",
-      "name": "disk-analyzer",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 3,
-      "lastActivity": "2025-12-23T20:11:32Z"
-    },
-    {
-      "fullName": "radaiko/Navigator",
-      "name": "Navigator",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 4,
-      "lastActivity": "2025-12-07T16:38:32Z"
-    },
-    {
-      "fullName": "radaiko/EvergineDemo",
-      "name": "EvergineDemo",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 1,
-      "lastActivity": "2025-12-06T19:59:28Z"
-    },
-    {
-      "fullName": "radaiko/EasyLogger",
-      "name": "EasyLogger",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 13,
-      "lastActivity": "2025-12-03T21:23:24Z"
-    },
-    {
-      "fullName": "radaiko/LevelDB-Viewer",
-      "name": "LevelDB-Viewer",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 1,
-      "lastActivity": "2025-11-21T15:49:29Z"
+      "lastActivity": "2026-04-28T19:53:22Z"
     }
   ],
   "weeklyCommits": [
-    1,
-    13,
-    5,
-    0,
-    6,
-    0,
-    0,
-    0,
-    0,
     7,
-    3,
-    121
+    361,
+    463,
+    311,
+    52,
+    0,
+    0,
+    117,
+    70,
+    19,
+    80,
+    73
   ],
-  "totalCommits": 156,
-  "activeWeeks": 7,
+  "totalCommits": 1553,
+  "activeWeeks": 10,
   "pages": [
+    {
+      "name": "Fleetarr",
+      "url": "https://radaiko.github.io/Fleetarr/",
+      "description": "",
+      "language": "Swift"
+    },
     {
       "name": "Graft",
       "url": "https://radaiko.github.io/Graft/",
@@ -114,10 +96,28 @@
       "language": "C#"
     },
     {
+      "name": "nook-app",
+      "url": "https://radaiko.github.io/nook-app/",
+      "description": "Nook \u2014 Where thoughts come to breathe. A markdown-first note app.",
+      "language": ""
+    },
+    {
+      "name": "Orbital",
+      "url": "https://radaiko.github.io/Orbital/",
+      "description": "",
+      "language": "C#"
+    },
+    {
       "name": "OwlSight",
       "url": "https://radaiko.github.io/OwlSight/",
-      "description": "AI Code Review",
+      "description": "AI-powered code review CLI tool for .NET",
       "language": "C#"
+    },
+    {
+      "name": "SnackPilot",
+      "url": "https://radaiko.github.io/SnackPilot/",
+      "description": "Native iOS & Android app for company cafeteria menu ordering & billing \u2014 shared Rust core (UniFFI) + SwiftUI/Compose.",
+      "language": "Rust"
     }
   ]
 }
