@@ -1,1367 +1,831 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>radaiko — Developer</title>
-  <meta name="description" content="Software developer from Upper Austria. Building developer tools, desktop apps, and cross-platform solutions with C#, .NET, and more.">
+  <title>radaiko — Software Developer</title>
+  <meta name="description" content="radaiko — software developer building native iOS & Android apps and cross-platform developer tools with Rust, Swift, and .NET.">
+  <meta name="theme-color" content="#0b0c0e">
+  <script>
+    // Set theme before first paint to avoid a flash.
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --bg-deep: #0a0a0f;
-      --bg-surface: #111118;
-      --bg-elevated: #1a1a24;
-      --bg-hover: #22222f;
-      --border: #2a2a3a;
-      --border-subtle: #1e1e2a;
-      --text-primary: #e8e8f0;
-      --text-secondary: #8888a0;
-      --text-muted: #555568;
-      --accent: #64ffb4;
-      --accent-dim: #64ffb433;
-      --accent-glow: #64ffb418;
-      --orange: #ff9f64;
-      --blue: #64b5ff;
-      --purple: #b464ff;
-      --pink: #ff64b5;
-      --yellow: #ffd764;
-      --red: #ff6464;
-      --mono: 'JetBrains Mono', monospace;
-      --sans: 'Outfit', sans-serif;
+    /* ===== TOKENS — dark is the default (also the no-JS default) ===== */
+    :root, :root[data-theme="dark"] {
+      --bg: #0b0c0e;
+      --surface: #111316;
+      --elevated: #16181c;
+      --text: #f4f5f6;
+      --muted: #8a9099;
+      --faint: #575d66;
+      --rule: #22252a;
+      --rule-strong: #30343b;
+      --accent: #2b6fff;
+      --accent-text: #6ea0ff;
+      --accent-weak: rgba(43, 111, 255, 0.14);
+      --accent-contrast: #ffffff;
+      --danger: #ff5c5c;
+      --grid: rgba(255, 255, 255, 0.022);
+      color-scheme: dark;
+    }
+    :root[data-theme="light"] {
+      --bg: #ffffff;
+      --surface: #f6f7f8;
+      --elevated: #ffffff;
+      --text: #0a0b0d;
+      --muted: #5a6169;
+      --faint: #969ba2;
+      --rule: #e4e6e9;
+      --rule-strong: #d3d6da;
+      --accent: #1f5fe6;
+      --accent-text: #1f5fe6;
+      --accent-weak: rgba(31, 95, 230, 0.08);
+      --accent-contrast: #ffffff;
+      --danger: #d83a3a;
+      --grid: rgba(0, 0, 0, 0.028);
+      color-scheme: light;
+    }
+    /* no-JS visitors who prefer light */
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme]) {
+        --bg: #ffffff; --surface: #f6f7f8; --elevated: #ffffff;
+        --text: #0a0b0d; --muted: #5a6169; --faint: #969ba2;
+        --rule: #e4e6e9; --rule-strong: #d3d6da;
+        --accent: #1f5fe6; --accent-text: #1f5fe6; --accent-weak: rgba(31,95,230,0.08);
+        --grid: rgba(0,0,0,0.028); color-scheme: light;
+      }
     }
 
-    html {
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) var(--bg-deep);
+    :root {
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --wrap: 1140px;
     }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     body {
-      background: var(--bg-deep);
-      color: var(--text-primary);
+      background: var(--bg);
+      color: var(--text);
       font-family: var(--sans);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.25s ease, color 0.25s ease;
     }
 
-    /* === NOISE OVERLAY === */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 256px 256px;
-    }
-
-    /* === GRID BACKGROUND === */
+    /* Subtle engineered grid background */
     .grid-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image:
-        linear-gradient(var(--border-subtle) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.3;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 35%, transparent 85%);
     }
 
-    /* === GLOW ORB === */
-    .glow-orb {
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
-      top: -200px;
-      right: -100px;
-      z-index: 0;
-      animation: orbFloat 20s ease-in-out infinite;
-    }
+    ::selection { background: var(--accent); color: var(--accent-contrast); }
 
-    @keyframes orbFloat {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(-80px, 40px) scale(1.1); }
-      66% { transform: translate(40px, -30px) scale(0.95); }
-    }
+    .wrap { position: relative; z-index: 1; max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
 
-    /* === LAYOUT === */
-    .page {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* Shared type helpers */
+    .mono { font-family: var(--mono); }
+    .eyebrow {
+      font-family: var(--mono); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
     }
+    .tilde { color: var(--accent-text); }
 
-    /* === NAV === */
+    a { color: inherit; }
+
+    /* ===== NAV ===== */
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-subtle);
-      animation: fadeIn 0.6s ease both;
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 28px;
+      max-width: var(--wrap); margin: 0 auto;
+      border-bottom: 1px solid var(--rule);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: blur(10px);
     }
-
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: -0.02em;
-    }
-
-    .nav-logo span { color: var(--text-muted); }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
+    .nav-logo { font-family: var(--mono); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-logo .path { color: var(--muted); font-weight: 400; }
+    .nav-right { display: flex; align-items: center; gap: 26px; }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
     .nav-links a {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-      letter-spacing: -0.01em;
+      font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.01em; transition: color 0.15s;
     }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    /* === HERO === */
-    .hero {
-      padding: 100px 0 80px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 60px;
-      align-items: center;
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a::before { content: '~/'; color: var(--faint); }
+    .icon-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border: 1px solid var(--rule);
+      background: var(--surface); color: var(--text); cursor: pointer;
+      border-radius: 5px; transition: border-color 0.15s, background 0.15s;
     }
+    .icon-btn:hover { border-color: var(--rule-strong); background: var(--elevated); }
+    .icon-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .theme-toggle .moon { display: none; }
+    .theme-toggle .sun { display: block; }
+    :root[data-theme="light"] .theme-toggle .moon { display: block; }
+    :root[data-theme="light"] .theme-toggle .sun { display: none; }
 
-    .hero-content { animation: slideUp 0.8s ease both 0.1s; }
+    /* ===== SECTION MARKER (filesystem metaphor) ===== */
+    .marker { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; }
+    .marker .path {
+      font-family: var(--mono); font-size: 13px; font-weight: 600;
+      letter-spacing: 0.02em; white-space: nowrap; color: var(--text);
+    }
+    .marker .path .tilde { font-weight: 600; }
+    .marker .line { flex: 1; height: 1px; background: var(--rule); transform: translateY(-3px); }
+    .marker .count { font-family: var(--mono); font-size: 12px; color: var(--faint); white-space: nowrap; }
 
+    section { padding: 84px 0; }
+    section:first-of-type { padding-top: 0; }
+
+    /* ===== HERO ===== */
+    .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 52px; align-items: start; padding: 60px 0 72px; }
+    .hero-kicker { margin-bottom: 22px; }
     .hero h1 {
-      font-size: clamp(48px, 7vw, 80px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 20px;
+      font-size: clamp(42px, 6.4vw, 82px); font-weight: 600; line-height: 0.98;
+      letter-spacing: -0.035em; margin-bottom: 24px;
     }
-
-    .hero h1 .accent { color: var(--accent); }
-
-    .hero-desc {
-      font-size: 18px;
-      color: var(--text-secondary);
-      max-width: 500px;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    .hero-desc strong {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-
-    .hero-meta {
-      display: flex;
-      gap: 24px;
-      margin-top: 32px;
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .hero-meta span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-meta svg {
-      width: 14px;
-      height: 14px;
-      stroke: var(--text-muted);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 36px;
-    }
-
+    .hero h1 .accent { color: var(--accent-text); }
+    .hero-desc { font-size: 17px; color: var(--muted); max-width: 460px; line-height: 1.65; font-weight: 300; }
+    .hero-desc strong { color: var(--text); font-weight: 500; }
+    .hero-actions { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.2s;
-      border: none;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 13px; font-weight: 500;
+      padding: 11px 18px; border-radius: 6px; text-decoration: none;
+      border: 1px solid transparent; cursor: pointer; transition: all 0.15s;
+    }
+    .btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .btn-primary { background: var(--accent); color: var(--accent-contrast); }
+    .btn-primary:hover { filter: brightness(1.08); box-shadow: 0 6px 24px var(--accent-weak); transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--text); border-color: var(--rule-strong); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent-text); }
+    .hero-meta { display: flex; gap: 22px; margin-top: 30px; font-family: var(--mono); font-size: 12.5px; color: var(--faint); flex-wrap: wrap; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-meta svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ===== TERMINAL (the signature) ===== */
+    .terminal {
+      border: 1px solid var(--rule-strong); border-radius: 8px; overflow: hidden;
+      background: var(--surface); font-family: var(--mono);
+      box-shadow: 0 24px 60px -30px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; min-height: 400px;
+    }
+    .term-bar {
+      display: flex; align-items: center; gap: 10px; padding: 11px 14px;
+      border-bottom: 1px solid var(--rule); background: var(--elevated);
+    }
+    .term-bar .blk { width: 9px; height: 9px; border-radius: 2px; background: var(--rule-strong); }
+    .term-bar .blk.on { background: var(--accent); }
+    .term-title { margin-left: 4px; font-size: 11.5px; color: var(--muted); letter-spacing: 0.02em; }
+    .term-live { margin-left: auto; font-size: 11px; color: var(--faint); display: inline-flex; align-items: center; gap: 6px; }
+    .term-live .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent); animation: pulse 2.4s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--accent-weak); } 70% { box-shadow: 0 0 0 7px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+    .term-body {
+      flex: 1; padding: 16px 16px 6px; font-size: 13px; line-height: 1.7;
+      overflow-y: auto; max-height: 340px; scrollbar-width: thin; scrollbar-color: var(--rule-strong) transparent;
+    }
+    .term-body::-webkit-scrollbar { width: 8px; }
+    .term-body::-webkit-scrollbar-thumb { background: var(--rule-strong); border-radius: 4px; }
+    .term-line { white-space: pre-wrap; word-break: break-word; }
+    .term-line.cmd { color: var(--text); }
+    .term-line.out { color: var(--muted); }
+    .term-line.ok { color: var(--accent-text); }
+    .term-line.err { color: var(--danger); }
+    .term-line .prompt { color: var(--accent-text); }
+    .term-line .k { color: var(--text); }
+    .term-line a { color: var(--accent-text); text-decoration: none; border-bottom: 1px solid var(--accent-weak); }
+    .term-line a:hover { border-bottom-color: var(--accent); }
+    .term-spacer { height: 6px; }
+
+    .term-inputline { display: flex; align-items: center; gap: 8px; padding: 8px 16px 14px; border-top: 1px solid var(--rule); }
+    .term-inputline .prompt { color: var(--accent-text); font-size: 13px; }
+    .term-input {
+      flex: 1; background: transparent; border: none; outline: none;
+      color: var(--text); font-family: var(--mono); font-size: 13px; caret-color: var(--accent);
+    }
+    .cursor { display: inline-block; width: 8px; height: 15px; background: var(--accent); vertical-align: -2px; animation: blink 1.05s step-end infinite; }
+    @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+    .term-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 16px; }
+    .chip {
+      font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+      padding: 4px 9px; border: 1px solid var(--rule); border-radius: 5px;
+      background: var(--bg); cursor: pointer; transition: all 0.13s;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent-text); }
+    .chip::before { content: '$ '; color: var(--faint); }
+
+    /* ===== WORK CARDS ===== */
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .work-card {
+      position: relative; display: flex; flex-direction: column;
+      border: 1px solid var(--rule); border-radius: 8px; padding: 26px;
+      background: var(--surface); text-decoration: none; color: inherit;
+      transition: border-color 0.16s, background 0.16s, transform 0.16s;
+    }
+    .work-card:hover { border-color: var(--accent); background: var(--accent-weak); transform: translateY(-2px); }
+    .work-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    .work-icon { width: 44px; height: 44px; border: 1px solid var(--rule-strong); border-radius: 7px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 20px; background: var(--elevated); flex-shrink: 0; }
+    .work-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .work-tag { font-family: var(--mono); font-size: 11px; padding: 4px 9px; border: 1px solid var(--rule-strong); border-radius: 5px; color: var(--muted); white-space: nowrap; }
+    .work-tag.lang { color: var(--accent-text); border-color: var(--accent-weak); }
+    .work-path { font-family: var(--mono); font-size: 12px; color: var(--faint); margin-bottom: 6px; }
+    .work-card h3 { font-size: 23px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .work-card p { font-size: 14px; color: var(--muted); font-weight: 300; line-height: 1.6; flex: 1; }
+    .work-foot { display: flex; align-items: center; gap: 16px; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11.5px; color: var(--faint); flex-wrap: wrap; }
+    .work-foot span { display: inline-flex; align-items: center; gap: 6px; }
+    .work-foot svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .work-open { position: absolute; top: 22px; right: 22px; color: var(--faint); opacity: 0; transform: translate(-3px, 3px); transition: all 0.16s; }
+    .work-card:hover .work-open { opacity: 1; transform: translate(0,0); color: var(--accent-text); }
+    .work-open svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ===== STATUS ===== */
+    .status-card { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); overflow: hidden; }
+    .status-col { padding: 26px; }
+    .status-col + .status-col { border-left: 1px solid var(--rule); }
+    .status-col h3 { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .status-col h3 .win { color: var(--accent-text); text-transform: none; letter-spacing: 0; }
+    .status-list { display: flex; flex-direction: column; gap: 4px; max-height: 300px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--rule-strong) transparent; margin: -4px; padding: 4px; }
+    .status-loading { font-family: var(--mono); font-size: 12.5px; color: var(--faint); padding: 8px 0; }
+    .repo { display: flex; align-items: center; gap: 12px; padding: 9px 11px; border: 1px solid transparent; border-radius: 6px; text-decoration: none; color: inherit; transition: background 0.14s, border-color 0.14s; }
+    .repo:hover { background: var(--bg); border-color: var(--rule); }
+    .repo-icon { width: 26px; text-align: center; font-size: 15px; flex-shrink: 0; }
+    .repo-info { flex: 1; min-width: 0; }
+    .repo-name { font-size: 13.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .repo-name .owner { color: var(--faint); font-weight: 400; }
+    .repo-when { font-family: var(--mono); font-size: 11px; color: var(--faint); margin-top: 1px; }
+    .repo-badge { font-family: var(--mono); font-size: 10.5px; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; background: var(--accent-weak); color: var(--accent-text); border: 1px solid var(--accent-weak); }
+    .repo-badge.low { background: transparent; color: var(--faint); border-color: var(--rule); }
+
+    .bars { display: flex; align-items: flex-end; gap: 5px; height: 88px; padding-top: 8px; }
+    .bar { flex: 1; min-width: 5px; background: var(--accent); border-radius: 2px 2px 0 0; opacity: 0.28; transition: height 0.5s cubic-bezier(0.22,1,0.36,1); }
+    .bars-label { margin-top: 16px; font-family: var(--mono); font-size: 12px; color: var(--faint); line-height: 1.5; }
+    #status.flash .status-card { animation: flash 1.1s ease; }
+    @keyframes flash { 0%, 100% { box-shadow: 0 0 0 0 transparent; border-color: var(--rule); } 30% { box-shadow: 0 0 0 3px var(--accent-weak); border-color: var(--accent); } }
+
+    /* ===== STACK ===== */
+    .stack-group { display: grid; grid-template-columns: 160px 1fr; gap: 20px; padding: 22px 0; border-top: 1px solid var(--rule); }
+    .stack-group:last-child { border-bottom: 1px solid var(--rule); }
+    .stack-label { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); padding-top: 4px; }
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .stack-tag { font-family: var(--mono); font-size: 13px; padding: 7px 13px; border: 1px solid var(--rule); border-radius: 6px; color: var(--muted); background: var(--surface); transition: all 0.14s; }
+    .stack-tag:hover { border-color: var(--accent); color: var(--accent-text); transform: translateY(-1px); }
+
+    /* ===== DOCS ===== */
+    .docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .docs-card { display: flex; align-items: center; gap: 13px; padding: 15px 17px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); text-decoration: none; color: inherit; transition: border-color 0.15s, background 0.15s; }
+    .docs-card:hover { border-color: var(--accent); background: var(--accent-weak); }
+    .docs-icon { width: 38px; height: 38px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; border: 1px solid var(--rule-strong); border-radius: 7px; background: var(--elevated); }
+    .docs-info { min-width: 0; }
+    .docs-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .docs-desc { font-family: var(--mono); font-size: 11.5px; color: var(--faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .docs-loading { font-family: var(--mono); font-size: 12.5px; color: var(--faint); padding: 8px 0; }
+
+    /* ===== FOOTER ===== */
+    footer { border-top: 1px solid var(--rule); padding: 34px 0 60px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .foot-left { font-family: var(--mono); font-size: 12.5px; color: var(--faint); }
+    .foot-left .cursor { width: 7px; height: 13px; margin-left: 2px; }
+    .foot-links { display: flex; gap: 20px; }
+    .foot-links a { font-family: var(--mono); font-size: 12.5px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .foot-links a:hover { color: var(--accent-text); }
+
+    /* ===== REVEAL ===== */
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .cursor, .term-live .dot { animation: none; }
+      .bar { transition: none; }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 56px; }
+      .hero-terminal { order: 3; }
+      .work-grid { grid-template-columns: 1fr; }
+      .status-card { grid-template-columns: 1fr; }
+      .status-col + .status-col { border-left: none; border-top: 1px solid var(--rule); }
+      .nav-links { display: none; }
+      .stack-group { grid-template-columns: 1fr; gap: 12px; }
     }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--bg-deep);
-    }
-
-    .btn-primary:hover {
-      background: #8affcc;
-      box-shadow: 0 0 30px var(--accent-dim);
-    }
-
-    .btn-secondary {
-      background: var(--bg-elevated);
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--text-muted);
-      color: var(--text-primary);
-    }
-
-    .btn svg {
-      width: 16px;
-      height: 16px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* Avatar */
-    .hero-avatar {
-      animation: slideUp 0.8s ease both 0.25s;
-    }
-
-    .avatar-frame {
-      position: relative;
-      width: 220px;
-      height: 220px;
-    }
-
-    .avatar-frame::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, var(--accent), var(--purple), var(--blue));
-      opacity: 0.6;
-      animation: borderRotate 6s linear infinite;
-    }
-
-    @keyframes borderRotate {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
-
-    .avatar-frame img {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 22px;
-      border: 3px solid var(--bg-deep);
-    }
-
-    /* === SECTION HEADERS === */
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .section-header h2 {
-      font-size: 14px;
-      font-family: var(--mono);
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .section-header .line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .section-header .num {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* === STATUS SECTION === */
-    .status-section {
-      padding: 60px 0;
-    }
-
-    .status-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-
-    .status-current h3 {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-    }
-
-    .status-period {
-      color: var(--accent);
-      text-transform: none;
-      letter-spacing: 0;
-    }
-
-    .status-project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      max-height: 320px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-    }
-
-    .status-loading {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--text-muted);
-      padding: 12px 0;
-    }
-
-    .status-repo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s;
-    }
-
-    .status-repo:hover {
-      border-color: var(--text-muted);
-      background: var(--bg-hover);
-    }
-
-    .status-repo-icon {
-      font-size: 16px;
-      flex-shrink: 0;
-      width: 28px;
-      text-align: center;
-    }
-
-    .status-repo-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .status-repo-name {
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .status-repo-owner {
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    .status-repo-commits {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .status-repo-badge {
-      font-family: var(--mono);
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 6px;
-      flex-shrink: 0;
-      background: var(--accent-glow);
-      color: var(--accent);
-      border: 1px solid var(--accent-dim);
-    }
-
-    .status-repo-badge.low {
-      background: var(--bg-surface);
-      color: var(--text-muted);
-      border-color: var(--border);
-    }
-
-    .status-activity h3 {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-    }
-
-    .activity-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      height: 48px;
-    }
-
-    .activity-bar {
-      width: 8px;
-      border-radius: 2px;
-      background: var(--accent);
-      opacity: 0.3;
-      animation: activityPulse 3s ease-in-out infinite;
-    }
-
-    .activity-bar.active { opacity: 0.8; }
-    .activity-bar:nth-child(1) { height: 30%; animation-delay: 0s; }
-    .activity-bar:nth-child(2) { height: 50%; animation-delay: 0.2s; }
-    .activity-bar:nth-child(3) { height: 70%; animation-delay: 0.4s; }
-    .activity-bar:nth-child(4) { height: 45%; animation-delay: 0.6s; }
-    .activity-bar:nth-child(5) { height: 85%; animation-delay: 0.8s; }
-    .activity-bar:nth-child(6) { height: 60%; animation-delay: 1.0s; }
-    .activity-bar:nth-child(7) { height: 90%; animation-delay: 1.2s; }
-    .activity-bar:nth-child(8) { height: 40%; animation-delay: 1.4s; }
-    .activity-bar:nth-child(9) { height: 75%; animation-delay: 1.6s; }
-    .activity-bar:nth-child(10) { height: 55%; animation-delay: 1.8s; }
-    .activity-bar:nth-child(11) { height: 95%; animation-delay: 2.0s; }
-    .activity-bar:nth-child(12) { height: 65%; animation-delay: 2.2s; }
-
-    @keyframes activityPulse {
-      0%, 100% { opacity: 0.25; }
-      50% { opacity: 0.85; }
-    }
-
-    .activity-label {
-      margin-top: 12px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-
-    /* === PROJECTS === */
-    .projects-section {
-      padding: 60px 0;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
-    }
-
-    .project-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .project-card:hover {
-      border-color: var(--text-muted);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .project-card:hover::before { opacity: 1; }
-
-    .project-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .project-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-
-    .project-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .project-lang {
-      font-family: var(--mono);
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 100px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-    }
-
-    .lang-csharp { color: var(--purple); border-color: #b464ff33; }
-    .lang-kotlin { color: var(--orange); border-color: #ff9f6433; }
-    .lang-dart { color: var(--blue); border-color: #64b5ff33; }
-    .lang-cpp { color: var(--blue); border-color: #64b5ff33; }
-    .lang-python { color: var(--yellow); border-color: #ffd76433; }
-    .lang-typescript { color: var(--blue); border-color: #64b5ff33; }
-
-    .project-card h3 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .project-card p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      font-weight: 300;
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .project-footer {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-subtle);
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .project-footer span {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .project-footer svg {
-      width: 13px;
-      height: 13px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .project-private {
-      opacity: 0.5;
-      font-size: 0.7rem;
-    }
-
-    .project-card.featured {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-
-    .project-card.featured .project-main { display: flex; flex-direction: column; }
-
-    .project-card.featured .project-terminal {
-      background: var(--bg-deep);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      font-family: var(--mono);
-      font-size: 13px;
-      line-height: 1.8;
-      overflow: hidden;
-    }
-
-    .terminal-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .terminal-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .terminal-dot.r { background: var(--red); opacity: 0.7; }
-    .terminal-dot.y { background: var(--yellow); opacity: 0.7; }
-    .terminal-dot.g { background: var(--accent); opacity: 0.7; }
-
-    .terminal-line { color: var(--text-muted); }
-    .terminal-line .prompt { color: var(--accent); }
-    .terminal-line .cmd { color: var(--text-primary); }
-    .terminal-line .flag { color: var(--orange); }
-    .terminal-line .output { color: var(--text-secondary); }
-    .terminal-line .success { color: var(--accent); }
-
-    .cursor-blink {
-      display: inline-block;
-      width: 8px;
-      height: 16px;
-      background: var(--accent);
-      animation: blink 1s step-end infinite;
-      vertical-align: text-bottom;
-      margin-left: 2px;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-
-    /* === TECH STACK === */
-    .tech-section {
-      padding: 60px 0;
-    }
-
-    .tech-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tech-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 13px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      transition: all 0.2s;
-    }
-
-    .tech-pill:hover {
-      border-color: var(--text-muted);
-      color: var(--text-primary);
-      transform: translateY(-1px);
-    }
-
-    .tech-pill .tech-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    /* === DOCS === */
-    .docs-section {
-      padding: 60px 0;
-    }
-
-    .docs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 12px;
-    }
-
-    .docs-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s;
-    }
-
-    .docs-card:hover {
-      border-color: var(--text-muted);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .docs-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-    }
-
-    .docs-info {
-      min-width: 0;
-    }
-
-    .docs-name {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .docs-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-family: var(--mono);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .docs-loading {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--text-muted);
-      padding: 12px 0;
-    }
-
-    /* === FOOTER === */
-    footer {
-      padding: 48px 0;
-      border-top: 1px solid var(--border-subtle);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-left {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: 13px;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--accent); }
-
-    /* === ANIMATIONS === */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* === RESPONSIVE === */
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 60px 0 40px;
-        gap: 40px;
-      }
-
-      .hero-content { order: 2; }
-      .hero-avatar { order: 1; justify-self: center; }
-      .hero-desc { margin: 0 auto; }
-      .hero-meta { justify-content: center; }
-      .hero-actions { justify-content: center; }
-
-      .avatar-frame { width: 160px; height: 160px; }
-
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-card.featured {
-        grid-column: span 1;
-        grid-template-columns: 1fr;
-      }
-      .project-card.featured .project-terminal { display: none; }
-
-      .status-card {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
-
-      .nav-links { gap: 16px; }
-    }
-
     @media (max-width: 480px) {
-      .hero h1 { font-size: 36px; }
-      .nav-links a { font-size: 12px; }
-      .hero-meta { flex-direction: column; gap: 8px; }
+      .wrap, nav { padding-left: 18px; padding-right: 18px; }
+      .hero h1 { font-size: 40px; }
+      .hero-meta { gap: 14px; }
+      section { padding: 60px 0; }
     }
   </style>
 </head>
 <body>
   <div class="grid-bg"></div>
-  <div class="glow-orb"></div>
 
-  <div class="page">
-
-    <!-- NAV -->
-    <nav>
-      <div class="nav-logo">radaiko<span> ~/dev</span></div>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">radaiko<span class="path"> ~/dev</span></div>
+    <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#status">Status</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#stack">Stack</a></li>
-        <li><a href="#docs">Docs</a></li>
-        <li><a href="https://github.com/radaiko" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#work">work</a></li>
+        <li><a href="#status">status</a></li>
+        <li><a href="#stack">stack</a></li>
+        <li><a href="#docs">docs</a></li>
       </ul>
-    </nav>
+      <a class="icon-btn" href="https://github.com/radaiko" target="_blank" rel="noopener" aria-label="GitHub profile">
+        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </a>
+      <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
+        <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="wrap">
 
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
-        <h1>Building<br>tools that<br><span class="accent">ship.</span></h1>
+        <div class="eyebrow hero-kicker">// software developer · Upper Austria</div>
+        <h1>Native apps &amp;<br><span class="accent">developer tools.</span></h1>
         <p class="hero-desc">
-          Software developer crafting <strong>developer tools</strong>, <strong>desktop applications</strong>, and <strong>cross-platform solutions</strong>. Primarily working with the .NET ecosystem.
+          I build <strong>native iOS &amp; Android apps</strong> and <strong>cross-platform developer tools</strong> — mostly in Rust, Swift, and the .NET ecosystem.
         </p>
-        <div class="hero-meta">
-          <span>
-            <svg><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Upper Austria
-          </span>
-          <span>
-            <svg><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            35+ repositories
-          </span>
-        </div>
         <div class="hero-actions">
           <a href="https://github.com/radaiko" target="_blank" rel="noopener" class="btn btn-primary">
-            <svg><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
             View GitHub
           </a>
           <a href="mailto:radaiko@users.noreply.github.com" class="btn btn-secondary">
-            <svg><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Contact
           </a>
         </div>
-      </div>
-      <div class="hero-avatar">
-        <div class="avatar-frame">
-          <img src="https://avatars.githubusercontent.com/u/15850003?v=4" alt="radaiko" loading="eager">
+        <div class="hero-meta">
+          <span>
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Upper Austria
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            35+ repositories
+          </span>
         </div>
+      </div>
+
+      <!-- SIGNATURE: interactive terminal -->
+      <div class="hero-terminal">
+        <div class="terminal" id="terminal">
+          <div class="term-bar">
+            <span class="blk on"></span><span class="blk"></span><span class="blk"></span>
+            <span class="term-title">radaiko@web — ~/dev</span>
+            <span class="term-live"><span class="dot"></span>live</span>
+          </div>
+          <div class="term-body" id="term-body" aria-live="polite" aria-label="Terminal output">
+            <noscript><div class="term-line out">radaiko — software developer building native apps &amp; developer tools. See <a href="https://github.com/radaiko">github.com/radaiko</a>.</div></noscript>
+          </div>
+          <label class="term-inputline" for="term-input">
+            <span class="prompt">$</span>
+            <input class="term-input" id="term-input" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Terminal command input" placeholder="type a command — try: help">
+          </label>
+          <div class="term-chips" id="term-chips"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="reveal">
+      <div class="marker">
+        <span class="path"><span class="tilde">~/</span>work</span>
+        <span class="line"></span>
+        <span class="count">2 projects</span>
+      </div>
+      <div class="work-grid">
+
+        <a href="https://github.com/radaiko/SnackPilot" target="_blank" rel="noopener" class="work-card">
+          <span class="work-open"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <div class="work-top">
+            <div class="work-icon"><img src="https://raw.githubusercontent.com/radaiko/SnackPilot/main/assets/icons/icon-emerald.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F37D}️'))"></div>
+            <span class="work-tag lang">Rust</span>
+          </div>
+          <div class="work-path">~/snackpilot</div>
+          <h3>SnackPilot</h3>
+          <p>Native iOS &amp; Android app for company cafeteria menu ordering &amp; billing. A shared Rust core (UniFFI) powers SwiftUI and Jetpack Compose native shells.</p>
+          <div class="work-foot">
+            <span><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>iOS + Android</span>
+            <span><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Shared Rust core</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/radaiko/Fleetarr" target="_blank" rel="noopener" class="work-card">
+          <span class="work-open"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <div class="work-top">
+            <div class="work-icon"><img src="https://raw.githubusercontent.com/radaiko/Fleetarr/main/docs/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F4FA}'))"></div>
+            <span class="work-tag lang">Swift</span>
+          </div>
+          <div class="work-path">~/fleetarr</div>
+          <h3>Fleetarr</h3>
+          <p>Native SwiftUI dashboard for iOS, iPadOS &amp; macOS that watches a self-hosted media stack — Sonarr, Radarr, Prowlarr, Plex, Jellyfin and more — answering one question: is everything healthy?</p>
+          <div class="work-foot">
+            <span><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>iOS · iPadOS · macOS</span>
+            <span><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Dashboard</span>
+          </div>
+        </a>
+
       </div>
     </section>
 
     <!-- STATUS -->
-    <section id="status" class="status-section reveal">
-      <div class="section-header">
-        <h2>Current Status</h2>
-        <div class="line"></div>
-        <span class="num">01</span>
+    <section id="status" class="reveal">
+      <div class="marker">
+        <span class="path"><span class="tilde">~/</span>status</span>
+        <span class="line"></span>
+        <span class="count">last 12 weeks</span>
       </div>
       <div class="status-card">
-        <div class="status-current">
-          <h3>Active projects <span class="status-period">last 12 weeks</span></h3>
-          <div class="status-project-list" id="status-project-list">
-            <div class="status-loading">Fetching activity from GitHub...</div>
+        <div class="status-col">
+          <h3>Active projects <span class="win">— by recency</span></h3>
+          <div class="status-list" id="status-list">
+            <div class="status-loading">fetching activity from github…</div>
           </div>
         </div>
-        <div class="status-activity">
-          <h3>Commit Activity</h3>
-          <div class="activity-bars" id="activity-bars"></div>
-          <div class="activity-label" id="activity-label">loading commit history...</div>
+        <div class="status-col">
+          <h3>Commit activity</h3>
+          <div class="bars" id="bars"></div>
+          <div class="bars-label" id="bars-label">loading commit history…</div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="projects-section reveal">
-      <div class="section-header">
-        <h2>Projects</h2>
-        <div class="line"></div>
-        <span class="num">02</span>
+    <!-- STACK -->
+    <section id="stack" class="reveal">
+      <div class="marker">
+        <span class="path"><span class="tilde">~/</span>stack</span>
+        <span class="line"></span>
+        <span class="count">languages · frameworks · tooling</span>
       </div>
-
-      <div class="projects-grid">
-
-        <!-- FEATURED: Graft -->
-        <a href="https://github.com/radaiko/Graft" target="_blank" rel="noopener" class="project-card featured" style="--card-accent: var(--accent);">
-          <div class="project-main">
-            <div class="project-top">
-              <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/Graft/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F500}'))"></div>
-              <span class="project-lang lang-csharp">C#</span>
-            </div>
-            <h3>Graft</h3>
-            <p>A cross-platform CLI tool for managing stacked branches and git worktrees. Track dependencies, merge stacks bottom-to-top, and manage worktrees with a built-in web UI.</p>
-            <div class="project-footer">
-              <span>
-                <svg><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                Active
-              </span>
-              <span>
-                <svg><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg>
-                Git tooling
-              </span>
-            </div>
-          </div>
-          <div class="project-terminal">
-            <div class="terminal-header">
-              <span class="terminal-dot r"></span>
-              <span class="terminal-dot y"></span>
-              <span class="terminal-dot g"></span>
-            </div>
-            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">graft</span> <span class="flag">stack</span></div>
-            <div class="terminal-line"><span class="output">  main</span></div>
-            <div class="terminal-line"><span class="output">  &rArr; feature/auth</span></div>
-            <div class="terminal-line"><span class="output">    &rArr; feature/auth-ui</span></div>
-            <div class="terminal-line"><span class="success">  3 branches stacked</span></div>
-            <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">graft</span> <span class="flag">sync</span></div>
-            <div class="terminal-line"><span class="success">  &#10003; All worktrees synced</span></div>
-            <div class="terminal-line"><span class="prompt">$</span> <span class="cursor-blink"></span></div>
-          </div>
-        </a>
-
-        <!-- SparkShare -->
-        <div class="project-card" style="--card-accent: var(--accent);">
-          <div class="project-top">
-            <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/SparkShare/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{26A1}'))"></div>
-            <span class="project-lang lang-csharp">C#</span>
-          </div>
-          <h3>SparkShare</h3>
-          <p>Real-time coordination platform for shared EV charger availability. Create or join groups, report open spots, get notified, and reserve chargers with one tap.</p>
-          <div class="project-footer">
-            <span>
-              <svg><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-              Full-stack app
-            </span>
-            <span class="project-private">
-              <svg><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-              Private
-            </span>
-          </div>
+      <div class="stack-group">
+        <div class="stack-label">languages</div>
+        <div class="stack-tags">
+          <span class="stack-tag">Rust</span><span class="stack-tag">Swift</span><span class="stack-tag">Kotlin</span>
+          <span class="stack-tag">C#</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Python</span><span class="stack-tag">Dart</span>
         </div>
-
-        <!-- GourmetClient -->
-        <a href="https://github.com/radaiko/GourmetClient" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--purple);">
-          <div class="project-top">
-            <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/GourmetClient/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F37D}\uFE0F'))"></div>
-            <span class="project-lang lang-typescript">TypeScript</span>
-          </div>
-          <h3>GourmetClient</h3>
-          <p>Cross-platform app for company cafeteria menu ordering and billing. Built with Expo React Native (mobile) and Tauri v2 (desktop).</p>
-          <div class="project-footer">
-            <span>
-              <svg><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-              Expo + Tauri
-            </span>
-          </div>
-        </a>
-
-        <!-- EasyLogger -->
-        <a href="https://github.com/radaiko/EasyLogger" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--pink);">
-          <div class="project-top">
-            <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/EasyLogger/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F4DD}'))"></div>
-            <span class="project-lang lang-csharp">C#</span>
-          </div>
-          <h3>EasyLogger</h3>
-          <p>Simple, lightweight logging library for .NET. Static API with console and file outputs, automatic caller context, and thread-safe design.</p>
-          <div class="project-footer">
-            <span>
-              <svg><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-              Library
-            </span>
-          </div>
-        </a>
-
-        <!-- syslog2csv -->
-        <a href="https://github.com/radaiko/syslog2csv" target="_blank" rel="noopener" class="project-card" style="--card-accent: var(--yellow);">
-          <div class="project-top">
-            <div class="project-icon"><img src="https://raw.githubusercontent.com/radaiko/syslog2csv/main/.github/icon.png" alt="" onerror="this.replaceWith(document.createTextNode('\u{1F4C4}'))"></div>
-            <span class="project-lang lang-python">Python</span>
-          </div>
-          <h3>syslog2csv</h3>
-          <p>A script for converting syslog files to CSV. Supports rsyslog with more syslog server formats planned.</p>
-          <div class="project-footer">
-            <span>
-              <svg><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-              CLI tool
-            </span>
-          </div>
-        </a>
-
       </div>
-    </section>
-
-    <!-- TECH STACK -->
-    <section id="stack" class="tech-section reveal">
-      <div class="section-header">
-        <h2>Tech Stack</h2>
-        <div class="line"></div>
-        <span class="num">03</span>
+      <div class="stack-group">
+        <div class="stack-label">frameworks / ui</div>
+        <div class="stack-tags">
+          <span class="stack-tag">SwiftUI</span><span class="stack-tag">Jetpack Compose</span><span class="stack-tag">.NET</span>
+          <span class="stack-tag">Tauri</span><span class="stack-tag">React Native</span><span class="stack-tag">Flutter</span><span class="stack-tag">WPF</span><span class="stack-tag">ASP.NET</span>
+        </div>
       </div>
-      <div class="tech-grid">
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>C#</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>.NET</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>WPF</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--purple);"></span>ASP.NET</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>TypeScript</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>React Native</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>Tauri</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--yellow);"></span>Python</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--orange);"></span>Rust</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>Dart</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>Flutter</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--blue);"></span>Docker</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--accent);"></span>gRPC</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--accent);"></span>Git</div>
-        <div class="tech-pill"><span class="tech-dot" style="background: var(--yellow);"></span>CI/CD</div>
+      <div class="stack-group">
+        <div class="stack-label">tooling</div>
+        <div class="stack-tags">
+          <span class="stack-tag">UniFFI</span><span class="stack-tag">Docker</span><span class="stack-tag">Git</span>
+          <span class="stack-tag">CI/CD</span><span class="stack-tag">gRPC</span>
+        </div>
       </div>
     </section>
 
     <!-- DOCS -->
-    <section id="docs" class="docs-section reveal">
-      <div class="section-header">
-        <h2>Project Docs</h2>
-        <div class="line"></div>
-        <span class="num">04</span>
+    <section id="docs" class="reveal">
+      <div class="marker">
+        <span class="path"><span class="tilde">~/</span>docs</span>
+        <span class="line"></span>
+        <span class="count" id="docs-count">project pages</span>
       </div>
       <div class="docs-grid" id="docs-grid">
-        <div class="docs-loading">Loading project documentation sites...</div>
+        <div class="docs-loading">loading project documentation sites…</div>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-      <div class="footer-left">&copy; 2026 radaiko</div>
-      <div class="footer-links">
-        <a href="https://github.com/radaiko" target="_blank" rel="noopener">GitHub</a>
-        <a href="#projects">Projects</a>
-        <a href="#stack">Stack</a>
+      <div class="foot-left">$ radaiko — © 2026<span class="cursor"></span></div>
+      <div class="foot-links">
+        <a href="https://github.com/radaiko" target="_blank" rel="noopener">github</a>
+        <a href="#work">work</a>
+        <a href="#stack">stack</a>
       </div>
     </footer>
 
   </div>
 
   <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          entry.target.style.transitionDelay = `${i * 0.1}s`;
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    'use strict';
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-    reveals.forEach(el => observer.observe(el));
+    /* ===================== THEME ===================== */
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    function currentTheme() { return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
+    function setTheme(t, persist = true) {
+      root.setAttribute('data-theme', t);
+      if (persist) { try { localStorage.setItem('theme', t); } catch (e) {} }
+      themeToggle.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', t === 'dark' ? '#0b0c0e' : '#ffffff');
+    }
+    themeToggle.addEventListener('click', () => setTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
 
-    // Stagger project cards
-    const cards = document.querySelectorAll('.project-card');
-    const cardObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }, i * 80);
-          cardObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.05 });
-
-    cards.forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      card.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
-      cardObserver.observe(card);
-    });
-
-    // === DYNAMIC GITHUB STATUS ===
+    /* ===================== ACTIVITY DATA ===================== */
     const GITHUB_USER = 'radaiko';
     const GITHUB_API = 'https://api.github.com';
-
     const repoIcons = {
-      'Graft': '\u{1F500}',
-      'GourmetClient': '\u{1F37D}\uFE0F',
-      'SparkShare': '\u{26A1}',
-      'EasyLogger': '\u{1F4DD}',
-      'syslog2csv': '\u{1F4C4}',
+      'SnackPilot': '\u{1F37D}️', 'Fleetarr': '\u{1F4FA}', 'Graft': '\u{1F500}',
+      'OwlSight': '\u{1F989}', 'GourmetClient': '\u{1F37D}️', 'SparkShare': '\u{26A1}',
+      'EasyLogger': '\u{1F4DD}', 'syslog2csv': '\u{1F4C4}',
     };
+    let activityData = null;
 
     function timeAgo(dateStr) {
-      const seconds = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
-      if (seconds < 60) return 'just now';
-      const minutes = Math.floor(seconds / 60);
-      if (minutes < 60) return minutes + 'm ago';
-      const hours = Math.floor(minutes / 60);
-      if (hours < 24) return hours + 'h ago';
-      const days = Math.floor(hours / 24);
-      if (days < 7) return days + 'd ago';
-      const weeks = Math.floor(days / 7);
-      return weeks + 'w ago';
+      const s = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
+      if (s < 60) return 'just now';
+      const m = Math.floor(s / 60); if (m < 60) return m + 'm ago';
+      const h = Math.floor(m / 60); if (h < 24) return h + 'h ago';
+      const d = Math.floor(h / 24); if (d < 7) return d + 'd ago';
+      return Math.floor(d / 7) + 'w ago';
     }
 
     function renderStatus(data) {
-      const { repos, weeklyCommits, totalCommits, activeWeeks } = data;
-
-      // Render project list
-      const listEl = document.getElementById('status-project-list');
-      listEl.innerHTML = '';
-
-      if (!repos || repos.length === 0) {
-        listEl.innerHTML = '<div class="status-loading">No recent activity found</div>';
+      const list = document.getElementById('status-list');
+      list.innerHTML = '';
+      const repos = data.repos || [];
+      if (!repos.length) {
+        list.innerHTML = '<div class="status-loading">no recent activity found</div>';
       } else {
-        repos.forEach((repo, i) => {
+        repos.forEach(repo => {
           const icon = repoIcons[repo.name] || (repo.isOwn ? '\u{1F4C1}' : '\u{1F517}');
           const badgeClass = repo.commits >= 5 ? '' : ' low';
-          const ownerPrefix = repo.isOwn ? '' : `<span class="status-repo-owner">${repo.owner}/</span>`;
-
-          const link = document.createElement('a');
-          link.href = `https://github.com/${repo.fullName}`;
-          link.target = '_blank';
-          link.rel = 'noopener';
-          link.className = 'status-repo';
-          link.innerHTML = `
-            <span class="status-repo-icon">${icon}</span>
-            <div class="status-repo-info">
-              <div class="status-repo-name">${ownerPrefix}${repo.name}</div>
-              <div class="status-repo-commits">${timeAgo(repo.lastActivity)}</div>
-            </div>
-            <span class="status-repo-badge${badgeClass}">${repo.commits} commit${repo.commits !== 1 ? 's' : ''}</span>
-          `;
-          listEl.appendChild(link);
+          const owner = repo.isOwn ? '' : '<span class="owner">' + repo.owner + '/</span>';
+          const a = document.createElement('a');
+          a.href = 'https://github.com/' + repo.fullName;
+          a.target = '_blank'; a.rel = 'noopener'; a.className = 'repo';
+          a.innerHTML =
+            '<span class="repo-icon">' + icon + '</span>' +
+            '<div class="repo-info"><div class="repo-name">' + owner + repo.name + '</div>' +
+            '<div class="repo-when">' + timeAgo(repo.lastActivity) + '</div></div>' +
+            '<span class="repo-badge' + badgeClass + '">' + repo.commits + ' commit' + (repo.commits !== 1 ? 's' : '') + '</span>';
+          list.appendChild(a);
         });
       }
 
-      // Render activity bars
-      const maxCommits = Math.max(...weeklyCommits, 1);
-      const barsContainer = document.getElementById('activity-bars');
-      barsContainer.innerHTML = '';
-
-      weeklyCommits.forEach(count => {
+      const weekly = data.weeklyCommits || [];
+      const max = Math.max(...weekly, 1);
+      const bars = document.getElementById('bars');
+      bars.innerHTML = '';
+      weekly.forEach(c => {
         const bar = document.createElement('div');
-        bar.className = 'activity-bar';
-        const height = count > 0 ? Math.max(15, (count / maxCommits) * 100) : 8;
-        bar.style.height = height + '%';
-        bar.style.opacity = count > 0 ? 0.4 + (count / maxCommits) * 0.6 : 0.1;
-        bar.style.animation = 'none';
-        barsContainer.appendChild(bar);
+        bar.className = 'bar';
+        bar.style.height = (c > 0 ? Math.max(12, (c / max) * 100) : 6) + '%';
+        bar.style.opacity = c > 0 ? (0.35 + (c / max) * 0.65).toFixed(2) : 0.12;
+        bars.appendChild(bar);
       });
+      document.getElementById('bars-label').textContent =
+        (data.totalCommits || 0) + ' commits · ' + (data.activeWeeks || 0) + ' active weeks · ' + repos.length + ' project' + (repos.length !== 1 ? 's' : '');
 
-      document.getElementById('activity-label').textContent =
-        `${totalCommits} commits across ${activeWeeks} active weeks \u2014 ${repos.length} project${repos.length !== 1 ? 's' : ''}`;
-
-      // Render project docs
-      const docsGrid = document.getElementById('docs-grid');
+      const grid = document.getElementById('docs-grid');
       const pages = data.pages || [];
-      if (pages.length > 0) {
-        docsGrid.innerHTML = '';
-        pages.forEach(page => {
-          const icon = repoIcons[page.name] || '\u{1F4D6}';
-          const link = document.createElement('a');
-          link.href = page.url;
-          link.target = '_blank';
-          link.rel = 'noopener';
-          link.className = 'docs-card';
-          link.innerHTML = `
-            <div class="docs-icon">${icon}</div>
-            <div class="docs-info">
-              <div class="docs-name">${page.name}</div>
-              <div class="docs-desc">${page.description || page.url}</div>
-            </div>
-          `;
-          docsGrid.appendChild(link);
+      if (pages.length) {
+        grid.innerHTML = '';
+        pages.forEach(p => {
+          const icon = repoIcons[p.name] || '\u{1F4D6}';
+          const a = document.createElement('a');
+          a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; a.className = 'docs-card';
+          a.innerHTML = '<div class="docs-icon">' + icon + '</div><div class="docs-info"><div class="docs-name">' + p.name + '</div><div class="docs-desc">' + (p.description || p.url) + '</div></div>';
+          grid.appendChild(a);
         });
+        document.getElementById('docs-count').textContent = pages.length + ' page' + (pages.length !== 1 ? 's' : '');
       } else {
-        docsGrid.innerHTML = '<div class="docs-loading">No documentation sites found</div>';
+        grid.innerHTML = '<div class="docs-loading">no documentation sites found</div>';
       }
     }
 
     async function fetchFromStaticData() {
-      const resp = await fetch('data/activity.json');
-      if (!resp.ok) throw new Error('No static data');
-      return resp.json();
+      const r = await fetch('data/activity.json');
+      if (!r.ok) throw new Error('no static data');
+      return r.json();
     }
-
     async function fetchFromPublicAPI() {
-      const pageNums = [1, 2, 3];
-      const results = await Promise.all(
-        pageNums.map(p =>
-          fetch(`${GITHUB_API}/users/${GITHUB_USER}/events?per_page=100&page=${p}`)
-            .then(r => r.ok ? r.json() : [])
-            .catch(() => [])
-        )
-      );
+      const results = await Promise.all([1, 2, 3].map(p =>
+        fetch(GITHUB_API + '/users/' + GITHUB_USER + '/events?per_page=100&page=' + p)
+          .then(r => r.ok ? r.json() : []).catch(() => [])));
       const events = results.flat();
-      if (!events.length) throw new Error('No events');
-
-      const now = Date.now();
-      const weekMs = 7 * 24 * 60 * 60 * 1000;
-      const twelveWeeksAgo = now - 12 * weekMs;
-      const repos = {};
-      const weeklyCommits = new Array(12).fill(0);
-
-      events.filter(e => e.type === 'PushEvent').forEach(event => {
-        const eventTime = new Date(event.created_at).getTime();
-        if (eventTime < twelveWeeksAgo) return;
-
-        const repoName = event.repo.name;
-        const shortName = repoName.split('/').pop();
-        const owner = repoName.split('/')[0];
-        const commits = event.payload?.commits?.length || 1;
-
-        if (!repos[repoName]) {
-          repos[repoName] = {
-            fullName: repoName, name: shortName, owner,
-            isOwn: owner === GITHUB_USER, commits: 0,
-            lastActivity: event.created_at,
-          };
-        }
-        repos[repoName].commits += commits;
-        if (event.created_at > repos[repoName].lastActivity) {
-          repos[repoName].lastActivity = event.created_at;
-        }
-
-        const weekIndex = Math.floor((now - eventTime) / weekMs);
-        if (weekIndex < 12) weeklyCommits[11 - weekIndex] += commits;
+      if (!events.length) throw new Error('no events');
+      const now = Date.now(), weekMs = 6048e5, cutoff = now - 12 * weekMs;
+      const repos = {}, weekly = new Array(12).fill(0);
+      events.filter(e => e.type === 'PushEvent').forEach(ev => {
+        const t = new Date(ev.created_at).getTime();
+        if (t < cutoff) return;
+        const full = ev.repo.name, name = full.split('/').pop(), owner = full.split('/')[0];
+        const commits = (ev.payload && ev.payload.commits ? ev.payload.commits.length : 0) || 1;
+        if (!repos[full]) repos[full] = { fullName: full, name, owner, isOwn: owner === GITHUB_USER, commits: 0, lastActivity: ev.created_at };
+        repos[full].commits += commits;
+        if (ev.created_at > repos[full].lastActivity) repos[full].lastActivity = ev.created_at;
+        const wi = Math.floor((now - t) / weekMs);
+        if (wi < 12) weekly[11 - wi] += commits;
       });
-
-      const sorted = Object.values(repos).sort((a, b) => b.commits - a.commits);
-
-      // Also discover Pages sites from public API
+      const sorted = Object.values(repos).sort((a, b) => new Date(b.lastActivity) - new Date(a.lastActivity));
       let pages = [];
       try {
-        const reposResp = await fetch(`${GITHUB_API}/users/${GITHUB_USER}/repos?per_page=100`);
-        if (reposResp.ok) {
-          const allRepos = await reposResp.json();
-          pages = allRepos
-            .filter(r => r.has_pages && !r.fork && r.name !== `${GITHUB_USER}.github.io`)
-            .map(r => ({
-              name: r.name,
-              url: `https://${GITHUB_USER}.github.io/${r.name}/`,
-              description: r.description || '',
-              language: r.language || '',
-            }))
-            .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
-        }
-      } catch {}
-
-      return {
-        repos: sorted,
-        weeklyCommits,
-        totalCommits: weeklyCommits.reduce((a, b) => a + b, 0),
-        activeWeeks: weeklyCommits.filter(w => w > 0).length,
-        pages,
-      };
+        const rr = await fetch(GITHUB_API + '/users/' + GITHUB_USER + '/repos?per_page=100');
+        if (rr.ok) pages = (await rr.json())
+          .filter(r => r.has_pages && !r.fork && r.name !== GITHUB_USER + '.github.io')
+          .map(r => ({ name: r.name, url: 'https://' + GITHUB_USER + '.github.io/' + r.name + '/', description: r.description || '' }))
+          .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+      } catch (e) {}
+      return { repos: sorted, weeklyCommits: weekly, totalCommits: weekly.reduce((a, b) => a + b, 0), activeWeeks: weekly.filter(w => w > 0).length, pages };
     }
-
     async function loadStatus() {
-      try {
-        // Try pre-generated data first (includes private repos)
-        const data = await fetchFromStaticData();
-        renderStatus(data);
-      } catch {
-        try {
-          // Fall back to public API (public repos only)
-          const data = await fetchFromPublicAPI();
-          renderStatus(data);
-        } catch {
-          document.getElementById('status-project-list').innerHTML =
-            '<div class="status-loading">Could not load activity data</div>';
-          document.getElementById('activity-label').textContent =
-            'could not load live data';
-        }
+      let data = null;
+      try { data = await fetchFromStaticData(); }
+      catch (e) { try { data = await fetchFromPublicAPI(); } catch (e2) {} }
+      if (data) { activityData = data; renderStatus(data); }
+      else {
+        document.getElementById('status-list').innerHTML = '<div class="status-loading">could not load activity data</div>';
+        document.getElementById('bars-label').textContent = 'could not load live data';
       }
+      return data;
+    }
+    const activityReady = loadStatus();
+
+    /* ===================== TERMINAL ===================== */
+    const body = document.getElementById('term-body');
+    const input = document.getElementById('term-input');
+    const chipBar = document.getElementById('term-chips');
+    const history = [];
+    let histIdx = -1;
+
+    function esc(s) { return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
+    function print(html, cls) {
+      const div = document.createElement('div');
+      div.className = 'term-line ' + (cls || 'out');
+      div.innerHTML = html;
+      body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
+      return div;
+    }
+    function spacer() { const d = document.createElement('div'); d.className = 'term-spacer'; body.appendChild(d); }
+    function echo(cmd) { print('<span class="prompt">$</span> ' + esc(cmd), 'cmd'); }
+
+    function repoLink(name, url) { return '<a href="' + url + '" target="_blank" rel="noopener">' + name + '</a>'; }
+    const REPOS = {
+      snackpilot: 'https://github.com/radaiko/SnackPilot',
+      fleetarr: 'https://github.com/radaiko/Fleetarr',
+      graft: 'https://github.com/radaiko/Graft',
+      github: 'https://github.com/radaiko',
+      docs: '#docs',
+    };
+
+    const commands = {
+      help() {
+        print('available commands', 'ok');
+        [['help', 'show this list'], ['whoami', 'who is this'], ['projects', 'active projects'],
+         ['stack', 'languages &amp; tools'], ['status', 'live github activity'],
+         ['open &lt;name&gt;', 'open a repo (snackpilot·fleetarr·graft·github)'],
+         ['contact', 'get in touch'], ['theme [l|d]', 'switch light / dark'], ['clear', 'clear the screen']
+        ].forEach(([c, d]) => print('  <span class="k">' + c.padEnd(16, ' ') + '</span> ' + d));
+      },
+      whoami() {
+        print('radaiko — software developer', 'ok');
+        print('Upper Austria · builds native apps &amp; developer tools');
+      },
+      projects() {
+        print('active projects', 'ok');
+        print('  <span class="k">SnackPilot</span>  [Rust · iOS/Android]  ' + repoLink('cafeteria ordering, shared Rust core', REPOS.snackpilot));
+        print('  <span class="k">Fleetarr</span>    [Swift · iOS/iPad/mac] ' + repoLink('self-hosted media stack dashboard', REPOS.fleetarr));
+        print('→ run: <span class="k">open snackpilot</span> · <span class="k">open fleetarr</span>');
+      },
+      stack() {
+        print('stack', 'ok');
+        print('  <span class="k">languages </span> Rust · Swift · Kotlin · C# · TypeScript · Python · Dart');
+        print('  <span class="k">frameworks</span> SwiftUI · Jetpack Compose · .NET · Tauri · React Native · Flutter');
+        print('  <span class="k">tooling   </span> UniFFI · Docker · Git · CI/CD · gRPC');
+      },
+      async status() {
+        const d = activityData || await activityReady;
+        if (!d) { print('could not load activity data', 'err'); return; }
+        print('github activity — last 12 weeks', 'ok');
+        print('  ' + d.totalCommits + ' commits · ' + d.activeWeeks + ' active weeks · ' + (d.repos ? d.repos.length : 0) + ' repos');
+        if (d.repos && d.repos[0]) print('  most recent: <span class="k">' + esc(d.repos[0].name) + '</span> · ' + timeAgo(d.repos[0].lastActivity));
+        print('↓ see <span class="k">~/status</span>');
+        const s = document.getElementById('status');
+        s.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+        s.classList.remove('flash'); void s.offsetWidth; s.classList.add('flash');
+      },
+      open(args) {
+        const key = (args[0] || 'github').toLowerCase();
+        const url = REPOS[key];
+        if (!url) { print('open: unknown target "' + esc(key) + '" — try snackpilot, fleetarr, graft, github', 'err'); return; }
+        if (url.startsWith('#')) { print('jumping to ' + key + '…'); document.querySelector(url).scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
+        print('opening <span class="k">' + key + '</span> → ' + repoLink(url, url));
+        window.open(url, '_blank', 'noopener');
+      },
+      contact() {
+        print('email: <a href="mailto:radaiko@users.noreply.github.com">radaiko@users.noreply.github.com</a>');
+        print('github: ' + repoLink('github.com/radaiko', REPOS.github));
+      },
+      theme(args) {
+        const a = (args[0] || '').toLowerCase();
+        let t = a === 'l' || a === 'light' ? 'light' : a === 'd' || a === 'dark' ? 'dark' : (currentTheme() === 'dark' ? 'light' : 'dark');
+        setTheme(t);
+        print('theme → <span class="k">' + t + '</span>', 'ok');
+      },
+      clear() { body.innerHTML = ''; },
+      sudo() { print('permission denied 🙂  (nice try)', 'err'); },
+      ls() { print('work  status  stack  docs  — try <span class="k">projects</span>'); },
+    };
+
+    function execute(raw) {
+      const parts = raw.trim().split(/\s+/);
+      const name = (parts[0] || '').toLowerCase();
+      const args = parts.slice(1);
+      if (!name) return;
+      if (commands[name]) { const r = commands[name](args); spacerAfter(r); }
+      else { print('command not found: ' + esc(name) + ' — try <span class="k">help</span>', 'err'); spacer(); }
+    }
+    function spacerAfter(maybePromise) {
+      if (maybePromise && typeof maybePromise.then === 'function') maybePromise.then(() => spacer());
+      else spacer();
+    }
+    function runCommand(raw) {
+      if (!raw.trim()) return;
+      echo(raw);
+      if (raw.trim().toLowerCase() !== 'clear') { /* keep echo */ }
+      history.unshift(raw); histIdx = -1;
+      execute(raw);
     }
 
-    loadStatus();
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { const v = input.value; input.value = ''; runCommand(v); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); if (histIdx < history.length - 1) { histIdx++; input.value = history[histIdx]; } }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); if (histIdx > 0) { histIdx--; input.value = history[histIdx]; } else { histIdx = -1; input.value = ''; } }
+    });
+    // Focus the input when clicking anywhere in the terminal (not on links).
+    document.getElementById('terminal').addEventListener('click', (e) => {
+      if (e.target.tagName !== 'A') input.focus({ preventScroll: true });
+    });
+
+    // Command chips
+    ['help', 'projects', 'stack', 'status', 'open fleetarr', 'theme'].forEach(c => {
+      const b = document.createElement('button');
+      b.className = 'chip'; b.type = 'button'; b.textContent = c;
+      b.addEventListener('click', () => { runCommand(c); input.focus({ preventScroll: true }); });
+      chipBar.appendChild(b);
+    });
+
+    async function boot() {
+      if (reduceMotion) {
+        echo('whoami');
+      } else {
+        const line = print('<span class="prompt">$</span> <span class="cursor"></span>', 'cmd');
+        const text = 'whoami';
+        for (let i = 0; i < text.length; i++) {
+          line.innerHTML = '<span class="prompt">$</span> ' + esc(text.slice(0, i + 1)) + '<span class="cursor"></span>';
+          body.scrollTop = body.scrollHeight;
+          await sleep(70);
+        }
+        line.innerHTML = '<span class="prompt">$</span> whoami';
+      }
+      commands.whoami();
+      spacer();
+      print('type <span class="k">help</span> or click a command below ↓', 'out');
+      spacer();
+      input.focus({ preventScroll: true });
+    }
+    boot();
+
+    /* ===================== SCROLL REVEAL ===================== */
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); obs.unobserve(en.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
