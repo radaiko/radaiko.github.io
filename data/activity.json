@@ -1,13 +1,21 @@
 {
-  "generatedAt": "2026-07-20T18:18:21.389419+00:00",
+  "generatedAt": "2026-07-21T03:51:14.368634+00:00",
   "repos": [
+    {
+      "fullName": "radaiko/radaiko.github.io",
+      "name": "radaiko.github.io",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 6,
+      "lastActivity": "2026-07-20T19:29:15Z"
+    },
     {
       "fullName": "radaiko/Fleetarr",
       "name": "Fleetarr",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 29,
-      "lastActivity": "2026-07-20T17:52:11Z"
+      "commits": 30,
+      "lastActivity": "2026-07-20T18:28:49Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -67,26 +75,26 @@
     }
   ],
   "weeklyCommits": [
-    7,
-    361,
-    463,
-    311,
+    13,
+    364,
+    531,
+    234,
     52,
     0,
     0,
-    117,
-    70,
-    19,
+    119,
+    82,
+    5,
     80,
-    73
+    80
   ],
-  "totalCommits": 1553,
+  "totalCommits": 1560,
   "activeWeeks": 10,
   "pages": [
     {
       "name": "Fleetarr",
       "url": "https://radaiko.github.io/Fleetarr/",
-      "description": "",
+      "description": "Native SwiftUI (iOS \u00b7 iPadOS \u00b7 macOS) status & activity dashboard for a self-hosted media stack: Sonarr, Radarr, Prowlarr, Seerr, SABnzbd, Plex & Jellyfin.",
       "language": "Swift"
     },
     {
