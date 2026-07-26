@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-07-25T03:43:37.245967+00:00",
+  "generatedAt": "2026-07-26T04:01:34.316847+00:00",
   "repos": [
+    {
+      "fullName": "radaiko/flagit",
+      "name": "flagit",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 5,
+      "lastActivity": "2026-07-25T15:28:05Z"
+    },
     {
       "fullName": "radaiko/SnackPilot",
       "name": "SnackPilot",
@@ -46,7 +54,7 @@
       "name": "owned",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 1134,
+      "commits": 1133,
       "lastActivity": "2026-05-28T15:48:39Z"
     },
     {
@@ -67,21 +75,21 @@
     }
   ],
   "weeklyCommits": [
-    294,
-    377,
-    388,
-    132,
+    335,
+    345,
+    418,
+    92,
     0,
     0,
-    0,
-    170,
+    45,
+    125,
     36,
-    79,
-    18,
-    65
+    80,
+    44,
+    43
   ],
-  "totalCommits": 1559,
-  "activeWeeks": 9,
+  "totalCommits": 1563,
+  "activeWeeks": 10,
   "pages": [
     {
       "name": "Fleetarr",
