@@ -425,7 +425,7 @@
       <div class="marker">
         <span class="path"><span class="tilde">~/</span>work</span>
         <span class="line"></span>
-        <span class="count">2 projects</span>
+        <span class="count">4 projects</span>
       </div>
       <div class="work-grid">
 
@@ -456,6 +456,36 @@
           <div class="work-foot">
             <span><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>iOS · iPadOS · macOS</span>
             <span><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Dashboard</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/radaiko/Tectonic" target="_blank" rel="noopener" class="work-card">
+          <span class="work-open"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <div class="work-top">
+            <div class="work-icon">🔧</div>
+            <span class="work-tag lang">TypeScript · Rust</span>
+          </div>
+          <div class="work-path">~/tectonic</div>
+          <h3>Tectonic</h3>
+          <p>Browser-based parametric 2D/3D CAD system — Rust WASM geometric kernel powering a WebGPU-rendered editor with constraints, PMI, sheet metal, and native CAD import.</p>
+          <div class="work-foot">
+            <span><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>Web · WASM</span>
+            <span><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Rust kernel</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/radaiko/flagit" target="_blank" rel="noopener" class="work-card">
+          <span class="work-open"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <div class="work-top">
+            <div class="work-icon">🚩</div>
+            <span class="work-tag lang">Go</span>
+          </div>
+          <div class="work-path">~/flagit</div>
+          <h3>Flagit</h3>
+          <p>Self-hosted in-app ticket system — users flag issues from inside the app, Hermes dispatches Claude Code to analyze and fix them automatically.</p>
+          <div class="work-foot">
+            <span><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Automated fixes</span>
+            <span><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/></svg>Hermes + Claude Code</span>
           </div>
         </a>
 
@@ -560,7 +590,7 @@
     const GITHUB_USER = 'radaiko';
     const GITHUB_API = 'https://api.github.com';
     const repoIcons = {
-      'SnackPilot': '\u{1F37D}️', 'Fleetarr': '\u{1F4FA}', 'Graft': '\u{1F500}',
+      'SnackPilot': '\u{1F37D}️', 'Fleetarr': '\u{1F4FA}', 'Tectonic': '\u{1F527}', 'flagit': '\u{1F6A9}', 'Graft': '\u{1F500}',
       'OwlSight': '\u{1F989}', 'GourmetClient': '\u{1F37D}️', 'SparkShare': '\u{26A1}',
       'EasyLogger': '\u{1F4DD}', 'syslog2csv': '\u{1F4C4}',
     };
@@ -568,6 +598,8 @@
     const projectIcons = {
       'SnackPilot': 'https://raw.githubusercontent.com/radaiko/SnackPilot/main/assets/icons/icon-emerald.png',
       'Fleetarr': 'https://raw.githubusercontent.com/radaiko/Fleetarr/main/docs/icon.png',
+      'Tectonic': 'https://raw.githubusercontent.com/radaiko/Tectonic/main/docs/screenshots/editor.png',
+      'flagit': 'https://raw.githubusercontent.com/radaiko/flagit/main/docs/screenshots/overview.png',
     };
     let activityData = null;
 
@@ -713,6 +745,8 @@
     const REPOS = {
       snackpilot: 'https://github.com/radaiko/SnackPilot',
       fleetarr: 'https://github.com/radaiko/Fleetarr',
+      tectonic: 'https://github.com/radaiko/Tectonic',
+      flagit: 'https://github.com/radaiko/flagit',
       graft: 'https://github.com/radaiko/Graft',
       github: 'https://github.com/radaiko',
       docs: '#docs',
@@ -723,7 +757,7 @@
         print('available commands', 'ok');
         [['help', 'show this list'], ['whoami', 'who is this'], ['projects', 'active projects'],
          ['stack', 'languages &amp; tools'], ['status', 'live github activity'],
-         ['open &lt;name&gt;', 'open a repo (snackpilot·fleetarr·graft·github)'],
+         ['open &lt;name&gt;', 'open a repo (snackpilot·fleetarr·tectonic·flagit·graft·github)'],
          ['contact', 'get in touch'], ['theme [l|d]', 'switch light / dark'], ['clear', 'clear the screen']
         ].forEach(([c, d]) => print('  <span class="k">' + c.padEnd(16, ' ') + '</span> ' + d));
       },
@@ -733,9 +767,11 @@
       },
       projects() {
         print('active projects', 'ok');
-        print('  <span class="k">SnackPilot</span>  [Rust · iOS/Android]  ' + repoLink('cafeteria ordering, shared Rust core', REPOS.snackpilot));
-        print('  <span class="k">Fleetarr</span>    [Swift · iOS/iPad/mac] ' + repoLink('self-hosted media stack dashboard', REPOS.fleetarr));
-        print('→ run: <span class="k">open snackpilot</span> · <span class="k">open fleetarr</span>');
+        print('  <span class="k">SnackPilot</span>  [Rust · iOS/Android]    ' + repoLink('cafeteria ordering, shared Rust core', REPOS.snackpilot));
+        print('  <span class="k">Fleetarr</span>    [Swift · iOS/iPad/mac]  ' + repoLink('self-hosted media stack dashboard', REPOS.fleetarr));
+        print('  <span class="k">Tectonic</span>   [TS · Rust · WASM]     ' + repoLink('browser-based parametric CAD system', REPOS.tectonic));
+        print('  <span class="k">Flagit</span>     [Go]                 ' + repoLink('self-hosted in-app ticket system', REPOS.flagit));
+        print('→ run: <span class="k">open snackpilot</span> · <span class="k">open fleetarr</span> · <span class="k">open tectonic</span> · <span class="k">open flagit</span>');
       },
       stack() {
         print('stack', 'ok');
@@ -757,7 +793,7 @@
       open(args) {
         const key = (args[0] || 'github').toLowerCase();
         const url = REPOS[key];
-        if (!url) { print('open: unknown target "' + esc(key) + '" — try snackpilot, fleetarr, graft, github', 'err'); return; }
+        if (!url) { print('open: unknown target "' + esc(key) + '" — try snackpilot, fleetarr, tectonic, flagit, graft, github', 'err'); return; }
         if (url.startsWith('#')) { print('jumping to ' + key + '…'); document.querySelector(url).scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
         print('opening <span class="k">' + key + '</span> → ' + repoLink(url, url));
         window.open(url, '_blank', 'noopener');
