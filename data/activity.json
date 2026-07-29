@@ -1,21 +1,29 @@
 {
-  "generatedAt": "2026-07-28T03:41:55.642087+00:00",
+  "generatedAt": "2026-07-29T03:45:40.886953+00:00",
   "repos": [
-    {
-      "fullName": "radaiko/Tectonic",
-      "name": "Tectonic",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 40,
-      "lastActivity": "2026-07-27T20:46:27Z"
-    },
     {
       "fullName": "radaiko/flagit",
       "name": "flagit",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 9,
-      "lastActivity": "2026-07-27T20:21:06Z"
+      "commits": 13,
+      "lastActivity": "2026-07-28T10:55:53Z"
+    },
+    {
+      "fullName": "radaiko/radaiko.github.io",
+      "name": "radaiko.github.io",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 8,
+      "lastActivity": "2026-07-28T10:51:03Z"
+    },
+    {
+      "fullName": "radaiko/Tectonic",
+      "name": "Tectonic",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 42,
+      "lastActivity": "2026-07-28T10:43:50Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -24,14 +32,6 @@
       "isOwn": true,
       "commits": 125,
       "lastActivity": "2026-07-23T20:38:48Z"
-    },
-    {
-      "fullName": "radaiko/radaiko.github.io",
-      "name": "radaiko.github.io",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 6,
-      "lastActivity": "2026-07-20T19:29:15Z"
     },
     {
       "fullName": "radaiko/Fleetarr",
@@ -78,26 +78,26 @@
       "name": "wagnis",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 45,
+      "commits": 18,
       "lastActivity": "2026-05-06T15:58:27Z"
     }
   ],
   "weeklyCommits": [
-    359,
-    531,
-    234,
+    362,
+    588,
+    147,
     52,
     0,
     0,
-    119,
-    81,
-    6,
+    132,
+    74,
+    0,
     80,
     80,
-    51
+    59
   ],
-  "totalCommits": 1593,
-  "activeWeeks": 10,
+  "totalCommits": 1574,
+  "activeWeeks": 9,
   "pages": [
     {
       "name": "flagit",
@@ -120,7 +120,7 @@
     {
       "name": "Tectonic",
       "url": "https://radaiko.github.io/Tectonic/",
-      "description": "Tectonic \u2014 browser-based parametric 2D/3D CAD system",
+      "description": "Browser-based parametric 2D/3D CAD system. Rust WASM geometric kernel. Onshape + Fusion 360 ambition. CAD only, no cloud, no accounts.",
       "language": "TypeScript"
     }
   ]
