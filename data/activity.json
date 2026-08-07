@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T00:50:32.457619+00:00",
+  "generatedAt": "2026-08-07T01:32:32.479872+00:00",
   "repos": [
     {
       "fullName": "radaiko/flagit",
@@ -62,7 +62,7 @@
       "name": "owned",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 716,
+      "commits": 600,
       "lastActivity": "2026-05-28T15:48:39Z"
     },
     {
@@ -75,20 +75,20 @@
     }
   ],
   "weeklyCommits": [
-    567,
-    143,
-    7,
+    455,
+    146,
     0,
     0,
-    144,
-    62,
     0,
-    80,
-    80,
-    59,
+    149,
+    57,
+    53,
+    27,
+    82,
+    57,
     0
   ],
-  "totalCommits": 1142,
+  "totalCommits": 1026,
   "activeWeeks": 8,
   "pages": [
     {
