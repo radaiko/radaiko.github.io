@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-08-07T01:32:32.479872+00:00",
+  "generatedAt": "2026-08-08T00:38:09.575028+00:00",
   "repos": [
+    {
+      "fullName": "radaiko/Tectonic",
+      "name": "Tectonic",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 43,
+      "lastActivity": "2026-08-07T22:13:08Z"
+    },
     {
       "fullName": "radaiko/flagit",
       "name": "flagit",
@@ -16,14 +24,6 @@
       "isOwn": true,
       "commits": 8,
       "lastActivity": "2026-07-28T10:51:03Z"
-    },
-    {
-      "fullName": "radaiko/Tectonic",
-      "name": "Tectonic",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 42,
-      "lastActivity": "2026-07-28T10:43:50Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -62,7 +62,7 @@
       "name": "owned",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 600,
+      "commits": 519,
       "lastActivity": "2026-05-28T15:48:39Z"
     },
     {
@@ -75,21 +75,21 @@
     }
   ],
   "weeklyCommits": [
-    455,
-    146,
+    388,
+    132,
     0,
     0,
     0,
-    149,
+    170,
+    36,
+    79,
+    18,
+    65,
     57,
-    53,
-    27,
-    82,
-    57,
-    0
+    1
   ],
-  "totalCommits": 1026,
-  "activeWeeks": 8,
+  "totalCommits": 946,
+  "activeWeeks": 9,
   "pages": [
     {
       "name": "flagit",
