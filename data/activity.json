@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-08-08T00:38:09.575028+00:00",
+  "generatedAt": "2026-08-09T00:38:17.370641+00:00",
   "repos": [
     {
       "fullName": "radaiko/Tectonic",
       "name": "Tectonic",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 43,
-      "lastActivity": "2026-08-07T22:13:08Z"
+      "commits": 50,
+      "lastActivity": "2026-08-08T18:50:53Z"
     },
     {
       "fullName": "radaiko/flagit",
       "name": "flagit",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 13,
-      "lastActivity": "2026-07-28T10:55:53Z"
+      "commits": 14,
+      "lastActivity": "2026-08-08T06:37:05Z"
     },
     {
       "fullName": "radaiko/radaiko.github.io",
@@ -62,34 +62,26 @@
       "name": "owned",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 519,
+      "commits": 510,
       "lastActivity": "2026-05-28T15:48:39Z"
-    },
-    {
-      "fullName": "radaiko/sab2torbox",
-      "name": "sab2torbox",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 1,
-      "lastActivity": "2026-05-16T12:21:48Z"
     }
   ],
   "weeklyCommits": [
-    388,
-    132,
+    418,
+    92,
     0,
     0,
-    0,
-    170,
+    45,
+    125,
     36,
-    79,
-    18,
-    65,
-    57,
-    1
+    80,
+    44,
+    43,
+    52,
+    9
   ],
-  "totalCommits": 946,
-  "activeWeeks": 9,
+  "totalCommits": 944,
+  "activeWeeks": 10,
   "pages": [
     {
       "name": "flagit",
