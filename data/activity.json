@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T00:37:42.785711+00:00",
+  "generatedAt": "2026-08-18T00:37:27.869066+00:00",
   "repos": [
     {
       "fullName": "radaiko/trailless",
@@ -70,25 +70,25 @@
       "name": "owned",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 67,
+      "commits": 52,
       "lastActivity": "2026-05-28T15:48:39Z"
     }
   ],
   "weeklyCommits": [
-    67,
+    52,
     0,
     0,
-    101,
-    72,
-    33,
+    119,
     80,
-    70,
-    34,
-    35,
-    18,
-    17
+    7,
+    80,
+    80,
+    51,
+    8,
+    31,
+    4
   ],
-  "totalCommits": 527,
+  "totalCommits": 512,
   "activeWeeks": 10,
   "pages": [
     {
