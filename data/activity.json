@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-25T00:37:40.574812+00:00",
+  "generatedAt": "2026-08-26T00:37:43.311901+00:00",
   "repos": [
     {
       "fullName": "radaiko/orbitar",
       "name": "orbitar",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 31,
-      "lastActivity": "2026-08-24T21:52:56Z"
+      "commits": 44,
+      "lastActivity": "2026-08-25T22:33:49Z"
     },
     {
       "fullName": "radaiko/trailless",
@@ -77,19 +77,19 @@
   "weeklyCommits": [
     0,
     0,
-    119,
+    132,
+    74,
+    0,
     80,
-    7,
     80,
-    80,
-    51,
-    8,
+    59,
+    0,
     31,
     4,
-    31
+    44
   ],
-  "totalCommits": 491,
-  "activeWeeks": 10,
+  "totalCommits": 504,
+  "activeWeeks": 8,
   "pages": [
     {
       "name": "flagit",
