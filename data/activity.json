@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-09-07T01:07:00.762980+00:00",
+  "generatedAt": "2026-09-08T01:03:24.978857+00:00",
   "repos": [
-    {
-      "fullName": "radaiko/bugs-attack",
-      "name": "bugs-attack",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 10,
-      "lastActivity": "2026-09-04T21:05:40Z"
-    },
     {
       "fullName": "radaiko/orbitar",
       "name": "orbitar",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 97,
-      "lastActivity": "2026-09-04T16:48:14Z"
+      "commits": 99,
+      "lastActivity": "2026-09-07T18:29:52Z"
+    },
+    {
+      "fullName": "radaiko/bugs-attack",
+      "name": "bugs-attack",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 12,
+      "lastActivity": "2026-09-07T11:41:31Z"
     },
     {
       "fullName": "radaiko/trailless",
@@ -83,20 +83,20 @@
     }
   ],
   "weeklyCommits": [
-    101,
-    72,
-    33,
+    119,
     80,
-    70,
-    34,
-    35,
-    18,
-    17,
-    23,
-    61,
-    23
+    7,
+    80,
+    80,
+    51,
+    8,
+    31,
+    4,
+    31,
+    56,
+    24
   ],
-  "totalCommits": 567,
+  "totalCommits": 571,
   "activeWeeks": 12,
   "pages": [
     {
