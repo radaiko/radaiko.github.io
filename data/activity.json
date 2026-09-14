@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-09-13T01:07:52.373401+00:00",
+  "generatedAt": "2026-09-14T01:08:09.144177+00:00",
   "repos": [
     {
       "fullName": "radaiko/orbitar",
       "name": "orbitar",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 105,
-      "lastActivity": "2026-09-10T19:14:43Z"
+      "commits": 107,
+      "lastActivity": "2026-09-13T14:50:46Z"
     },
     {
       "fullName": "radaiko/bugs-attack",
@@ -70,7 +70,7 @@
       "name": "Boxarr",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 125,
+      "commits": 71,
       "lastActivity": "2026-07-10T17:03:46Z"
     },
     {
@@ -83,21 +83,21 @@
     }
   ],
   "weeklyCommits": [
-    121,
-    36,
+    70,
+    33,
     80,
-    44,
-    43,
-    52,
-    9,
-    26,
-    0,
-    77,
-    30,
-    17
+    70,
+    34,
+    35,
+    18,
+    17,
+    23,
+    61,
+    23,
+    19
   ],
-  "totalCommits": 535,
-  "activeWeeks": 11,
+  "totalCommits": 483,
+  "activeWeeks": 12,
   "pages": [
     {
       "name": "flagit",
