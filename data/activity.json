@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T01:11:30.430918+00:00",
+  "generatedAt": "2026-10-08T01:11:12.803621+00:00",
   "repos": [
     {
       "fullName": "radaiko/PocketFoundry",
@@ -78,18 +78,18 @@
     80,
     59,
     0,
-    31,
-    4,
-    44,
-    46,
-    21,
-    15,
+    35,
+    0,
+    53,
+    37,
+    29,
+    7,
     0,
     0,
     7
   ],
   "totalCommits": 307,
-  "activeWeeks": 9,
+  "activeWeeks": 8,
   "pages": [
     {
       "name": "flagit",
