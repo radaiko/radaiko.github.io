@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T01:11:03.164543+00:00",
+  "generatedAt": "2026-10-11T01:16:26.414362+00:00",
   "repos": [
     {
       "fullName": "radaiko/hermes-manager",
@@ -78,7 +78,7 @@
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 18,
+      "commits": 2,
       "lastActivity": "2026-07-23T20:38:48Z"
     },
     {
@@ -91,20 +91,20 @@
     }
   ],
   "weeklyCommits": [
-    54,
-    57,
-    1,
-    34,
+    43,
+    52,
+    9,
+    26,
     0,
-    72,
-    35,
+    77,
+    30,
     17,
     2,
     0,
     0,
     9
   ],
-  "totalCommits": 281,
+  "totalCommits": 265,
   "activeWeeks": 9,
   "pages": [
     {
