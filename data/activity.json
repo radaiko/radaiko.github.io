@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T01:16:26.414362+00:00",
+  "generatedAt": "2026-10-12T01:19:16.668262+00:00",
   "repos": [
     {
       "fullName": "radaiko/hermes-manager",
@@ -86,26 +86,26 @@
       "name": "Fleetarr",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 30,
+      "commits": 4,
       "lastActivity": "2026-07-20T18:28:49Z"
     }
   ],
   "weeklyCommits": [
-    43,
-    52,
-    9,
-    26,
-    0,
-    77,
-    30,
+    34,
+    35,
+    18,
     17,
-    2,
+    23,
+    61,
+    23,
+    19,
     0,
     0,
-    9
+    1,
+    8
   ],
-  "totalCommits": 265,
-  "activeWeeks": 9,
+  "totalCommits": 239,
+  "activeWeeks": 10,
   "pages": [
     {
       "name": "flagit",
