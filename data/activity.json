@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-20T01:01:32.701107+00:00",
+  "generatedAt": "2026-10-21T01:01:37.732617+00:00",
   "repos": [
     {
       "fullName": "radaiko/atelier",
       "name": "atelier",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 55,
-      "lastActivity": "2026-10-20T00:54:55Z"
+      "commits": 85,
+      "lastActivity": "2026-10-20T21:40:48Z"
     },
     {
       "fullName": "radaiko/hermes-manager",
@@ -62,7 +62,7 @@
       "name": "flagit",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 21,
+      "commits": 17,
       "lastActivity": "2026-08-10T19:47:17Z"
     },
     {
@@ -70,34 +70,26 @@
       "name": "Tectonic",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 16,
+      "commits": 14,
       "lastActivity": "2026-08-10T19:35:23Z"
-    },
-    {
-      "fullName": "radaiko/radaiko.github.io",
-      "name": "radaiko.github.io",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 2,
-      "lastActivity": "2026-07-28T10:51:03Z"
     }
   ],
   "weeklyCommits": [
-    8,
+    0,
     31,
     4,
-    31,
-    56,
-    24,
+    44,
+    46,
+    21,
     15,
     0,
     0,
-    1,
-    8,
-    55
+    7,
+    2,
+    85
   ],
-  "totalCommits": 233,
-  "activeWeeks": 10,
+  "totalCommits": 255,
+  "activeWeeks": 9,
   "pages": [
     {
       "name": "flagit",
