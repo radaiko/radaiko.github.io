@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-21T01:01:37.732617+00:00",
+  "generatedAt": "2026-10-22T01:00:13.596348+00:00",
   "repos": [
     {
       "fullName": "radaiko/atelier",
       "name": "atelier",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 85,
-      "lastActivity": "2026-10-20T21:40:48Z"
+      "commits": 101,
+      "lastActivity": "2026-10-21T22:54:05Z"
     },
     {
       "fullName": "radaiko/hermes-manager",
@@ -76,20 +76,20 @@
   ],
   "weeklyCommits": [
     0,
-    31,
-    4,
-    44,
-    46,
-    21,
-    15,
+    35,
+    0,
+    53,
+    37,
+    29,
+    7,
     0,
     0,
     7,
     2,
-    85
+    101
   ],
-  "totalCommits": 255,
-  "activeWeeks": 9,
+  "totalCommits": 271,
+  "activeWeeks": 8,
   "pages": [
     {
       "name": "flagit",
