@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-10-26T01:05:20.579967+00:00",
+  "generatedAt": "2026-10-27T01:04:32.152065+00:00",
   "repos": [
+    {
+      "fullName": "radaiko/personal-notes",
+      "name": "personal-notes",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 12,
+      "lastActivity": "2026-10-26T23:13:15Z"
+    },
     {
       "fullName": "radaiko/jarvis-os",
       "name": "jarvis-os",
@@ -75,20 +83,20 @@
     }
   ],
   "weeklyCommits": [
-    18,
-    17,
-    23,
-    61,
-    23,
-    19,
+    31,
+    4,
+    31,
+    56,
+    24,
+    15,
     0,
     0,
     1,
     8,
-    28,
-    124
+    55,
+    109
   ],
-  "totalCommits": 322,
+  "totalCommits": 334,
   "activeWeeks": 10,
   "pages": [
     {
