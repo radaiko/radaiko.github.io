@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T06:00:57.638138+00:00",
+  "generatedAt": "2026-10-31T05:56:31.248688+00:00",
   "repos": [
     {
       "fullName": "radaiko/personal-notes",
@@ -70,7 +70,7 @@
       "name": "flagit",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 17,
+      "commits": 16,
       "lastActivity": "2026-08-10T19:47:17Z"
     },
     {
@@ -78,26 +78,26 @@
       "name": "Tectonic",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 14,
+      "commits": 12,
       "lastActivity": "2026-08-10T19:35:23Z"
     }
   ],
   "weeklyCommits": [
-    35,
-    0,
-    70,
-    22,
     32,
+    0,
+    72,
+    35,
+    17,
     2,
     0,
     0,
-    8,
-    1,
-    132,
-    46
+    9,
+    0,
+    149,
+    29
   ],
-  "totalCommits": 348,
-  "activeWeeks": 9,
+  "totalCommits": 345,
+  "activeWeeks": 8,
   "pages": [
     {
       "name": "flagit",
