@@ -1,13 +1,21 @@
 {
-  "generatedAt": "2026-11-01T06:24:19.855633+00:00",
+  "generatedAt": "2026-11-02T06:25:21.854525+00:00",
   "repos": [
     {
       "fullName": "radaiko/personal-notes",
       "name": "personal-notes",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 26,
-      "lastActivity": "2026-10-29T19:31:59Z"
+      "commits": 35,
+      "lastActivity": "2026-11-02T05:58:16Z"
+    },
+    {
+      "fullName": "radaiko/SnackPilot",
+      "name": "SnackPilot",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 4,
+      "lastActivity": "2026-11-01T21:34:27Z"
     },
     {
       "fullName": "radaiko/jarvis-os",
@@ -70,7 +78,7 @@
       "name": "flagit",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 16,
+      "commits": 7,
       "lastActivity": "2026-08-10T19:47:17Z"
     },
     {
@@ -78,26 +86,26 @@
       "name": "Tectonic",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 5,
+      "commits": 3,
       "lastActivity": "2026-08-10T19:35:23Z"
     }
   ],
   "weeklyCommits": [
-    25,
-    2,
-    75,
-    30,
-    17,
-    2,
+    14,
+    24,
+    60,
+    23,
+    19,
     0,
     0,
-    9,
-    0,
-    152,
-    26
+    1,
+    8,
+    31,
+    121,
+    39
   ],
-  "totalCommits": 338,
-  "activeWeeks": 9,
+  "totalCommits": 340,
+  "activeWeeks": 10,
   "pages": [
     {
       "name": "flagit",
