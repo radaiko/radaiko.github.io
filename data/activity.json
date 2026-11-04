@@ -1,13 +1,21 @@
 {
-  "generatedAt": "2026-11-03T06:59:03.154930+00:00",
+  "generatedAt": "2026-11-04T06:41:15.791088+00:00",
   "repos": [
     {
       "fullName": "radaiko/personal-notes",
       "name": "personal-notes",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 41,
-      "lastActivity": "2026-11-02T21:41:50Z"
+      "commits": 53,
+      "lastActivity": "2026-11-04T05:38:28Z"
+    },
+    {
+      "fullName": "radaiko/opencode-openrouter-filter",
+      "name": "opencode-openrouter-filter",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 10,
+      "lastActivity": "2026-11-03T18:08:55Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -76,19 +84,19 @@
   ],
   "weeklyCommits": [
     4,
-    33,
-    54,
-    24,
-    15,
+    44,
+    46,
+    23,
+    13,
     0,
     0,
-    3,
-    6,
-    60,
-    104,
-    33
+    7,
+    2,
+    89,
+    86,
+    44
   ],
-  "totalCommits": 336,
+  "totalCommits": 358,
   "activeWeeks": 10,
   "pages": [
     {
