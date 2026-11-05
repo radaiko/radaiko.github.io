@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-04T06:41:15.791088+00:00",
+  "generatedAt": "2026-11-05T06:59:58.768326+00:00",
   "repos": [
     {
       "fullName": "radaiko/personal-notes",
       "name": "personal-notes",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 53,
-      "lastActivity": "2026-11-04T05:38:28Z"
+      "commits": 54,
+      "lastActivity": "2026-11-04T11:28:28Z"
     },
     {
       "fullName": "radaiko/opencode-openrouter-filter",
@@ -72,32 +72,24 @@
       "isOwn": true,
       "commits": 19,
       "lastActivity": "2026-09-10T10:37:42Z"
-    },
-    {
-      "fullName": "radaiko/trailless",
-      "name": "trailless",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 4,
-      "lastActivity": "2026-08-12T16:35:09Z"
     }
   ],
   "weeklyCommits": [
-    4,
-    44,
-    46,
-    23,
-    13,
+    0,
+    54,
+    36,
+    30,
+    6,
     0,
     0,
     7,
     2,
-    89,
-    86,
-    44
+    106,
+    69,
+    45
   ],
-  "totalCommits": 358,
-  "activeWeeks": 10,
+  "totalCommits": 355,
+  "activeWeeks": 9,
   "pages": [
     {
       "name": "flagit",
