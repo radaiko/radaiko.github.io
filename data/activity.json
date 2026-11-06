@@ -1,13 +1,21 @@
 {
-  "generatedAt": "2026-11-05T06:59:58.768326+00:00",
+  "generatedAt": "2026-11-06T06:59:39.414978+00:00",
   "repos": [
     {
       "fullName": "radaiko/personal-notes",
       "name": "personal-notes",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 54,
-      "lastActivity": "2026-11-04T11:28:28Z"
+      "commits": 60,
+      "lastActivity": "2026-11-06T05:34:25Z"
+    },
+    {
+      "fullName": "radaiko/SnackPilot",
+      "name": "SnackPilot",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 6,
+      "lastActivity": "2026-11-05T19:59:33Z"
     },
     {
       "fullName": "radaiko/opencode-openrouter-filter",
@@ -16,14 +24,6 @@
       "isOwn": true,
       "commits": 10,
       "lastActivity": "2026-11-03T18:08:55Z"
-    },
-    {
-      "fullName": "radaiko/SnackPilot",
-      "name": "SnackPilot",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 4,
-      "lastActivity": "2026-11-01T21:34:27Z"
     },
     {
       "fullName": "radaiko/jarvis-os",
@@ -76,19 +76,19 @@
   ],
   "weeklyCommits": [
     0,
-    54,
-    36,
-    30,
-    6,
-    0,
-    0,
-    7,
+    70,
+    26,
+    28,
     2,
-    106,
-    69,
-    45
+    0,
+    0,
+    8,
+    1,
+    132,
+    46,
+    50
   ],
-  "totalCommits": 355,
+  "totalCommits": 363,
   "activeWeeks": 9,
   "pages": [
     {
