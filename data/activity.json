@@ -1,13 +1,21 @@
 {
-  "generatedAt": "2026-11-07T06:13:11.985945+00:00",
+  "generatedAt": "2026-11-08T06:18:29.046497+00:00",
   "repos": [
     {
       "fullName": "radaiko/SnackPilot",
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 75,
-      "lastActivity": "2026-11-07T05:38:51Z"
+      "commits": 93,
+      "lastActivity": "2026-11-08T00:17:46Z"
+    },
+    {
+      "fullName": "radaiko/dotfiles",
+      "name": "dotfiles",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 4,
+      "lastActivity": "2026-11-07T21:38:45Z"
     },
     {
       "fullName": "radaiko/personal-notes",
@@ -75,21 +83,21 @@
     }
   ],
   "weeklyCommits": [
-    0,
-    72,
-    35,
+    2,
+    75,
+    30,
     17,
     2,
     0,
     0,
     9,
     0,
-    149,
-    30,
-    118
+    152,
+    27,
+    140
   ],
-  "totalCommits": 432,
-  "activeWeeks": 8,
+  "totalCommits": 454,
+  "activeWeeks": 9,
   "pages": [
     {
       "name": "flagit",
