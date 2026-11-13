@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-12T07:24:43.487126+00:00",
+  "generatedAt": "2026-11-13T06:56:56.113767+00:00",
   "repos": [
     {
       "fullName": "radaiko/personal-notes",
       "name": "personal-notes",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 97,
-      "lastActivity": "2026-11-12T05:29:18Z"
+      "commits": 104,
+      "lastActivity": "2026-11-13T06:40:21Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
@@ -83,20 +83,20 @@
     }
   ],
   "weeklyCommits": [
-    54,
-    36,
-    30,
-    6,
-    0,
-    0,
-    7,
+    70,
+    25,
+    29,
     2,
-    106,
-    69,
-    51,
-    219
+    0,
+    0,
+    8,
+    1,
+    132,
+    47,
+    55,
+    218
   ],
-  "totalCommits": 580,
+  "totalCommits": 587,
   "activeWeeks": 10,
   "pages": [
     {
