@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-11-18T07:42:19.322543+00:00",
+  "generatedAt": "2026-11-19T07:38:52.453928+00:00",
   "repos": [
     {
       "fullName": "radaiko/SnackPilot",
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 333,
-      "lastActivity": "2026-11-18T05:13:37Z"
+      "commits": 343,
+      "lastActivity": "2026-11-18T19:48:57Z"
     },
     {
       "fullName": "radaiko/personal-notes",
       "name": "personal-notes",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 163,
-      "lastActivity": "2026-11-18T00:14:51Z"
+      "commits": 164,
+      "lastActivity": "2026-11-18T07:46:41Z"
     },
     {
       "fullName": "radaiko/dotfiles",
@@ -70,7 +70,7 @@
       "name": "orbitar",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 63,
+      "commits": 53,
       "lastActivity": "2026-09-13T14:50:46Z"
     },
     {
@@ -83,20 +83,20 @@
     }
   ],
   "weeklyCommits": [
-    46,
-    23,
-    13,
+    36,
+    31,
+    5,
     0,
     0,
     7,
     2,
-    90,
-    85,
-    45,
-    222,
-    220
+    106,
+    69,
+    51,
+    236,
+    211
   ],
-  "totalCommits": 753,
+  "totalCommits": 754,
   "activeWeeks": 10,
   "pages": [
     {
