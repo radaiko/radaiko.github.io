@@ -1,37 +1,37 @@
 {
-  "generatedAt": "2026-11-21T07:25:12.490065+00:00",
+  "generatedAt": "2026-11-22T07:05:45.823629+00:00",
   "repos": [
-    {
-      "fullName": "radaiko/SnackPilot",
-      "name": "SnackPilot",
-      "owner": "radaiko",
-      "isOwn": true,
-      "commits": 353,
-      "lastActivity": "2026-11-20T21:59:23Z"
-    },
     {
       "fullName": "radaiko/twiggy",
       "name": "twiggy",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 33,
-      "lastActivity": "2026-11-20T21:46:31Z"
+      "commits": 98,
+      "lastActivity": "2026-11-22T00:36:03Z"
     },
     {
       "fullName": "radaiko/personal-notes",
       "name": "personal-notes",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 168,
-      "lastActivity": "2026-11-20T19:13:31Z"
+      "commits": 176,
+      "lastActivity": "2026-11-21T22:56:01Z"
+    },
+    {
+      "fullName": "radaiko/SnackPilot",
+      "name": "SnackPilot",
+      "owner": "radaiko",
+      "isOwn": true,
+      "commits": 380,
+      "lastActivity": "2026-11-21T10:55:53Z"
     },
     {
       "fullName": "radaiko/dotfiles",
       "name": "dotfiles",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 4,
-      "lastActivity": "2026-11-07T21:38:45Z"
+      "commits": 5,
+      "lastActivity": "2026-11-16T14:57:16Z"
     },
     {
       "fullName": "radaiko/opencode-openrouter-filter",
@@ -78,7 +78,7 @@
       "name": "orbitar",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 35,
+      "commits": 30,
       "lastActivity": "2026-09-13T14:50:46Z"
     },
     {
@@ -91,7 +91,7 @@
     }
   ],
   "weeklyCommits": [
-    35,
+    30,
     17,
     2,
     0,
@@ -100,11 +100,11 @@
     0,
     152,
     27,
-    118,
-    235,
-    188
+    140,
+    267,
+    235
   ],
-  "totalCommits": 783,
+  "totalCommits": 879,
   "activeWeeks": 9,
   "pages": [
     {
