@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-23T07:53:10.431186+00:00",
+  "generatedAt": "2026-11-24T10:05:21.405100+00:00",
   "repos": [
     {
       "fullName": "radaiko/personal-notes",
       "name": "personal-notes",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 184,
-      "lastActivity": "2026-11-22T21:05:41Z"
+      "commits": 191,
+      "lastActivity": "2026-11-24T05:19:02Z"
     },
     {
       "fullName": "radaiko/twiggy",
@@ -78,7 +78,7 @@
       "name": "orbitar",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 23,
+      "commits": 20,
       "lastActivity": "2026-09-13T14:50:46Z"
     },
     {
@@ -91,20 +91,20 @@
     }
   ],
   "weeklyCommits": [
-    23,
-    19,
+    24,
+    15,
     0,
     0,
-    1,
-    8,
-    34,
-    118,
-    40,
+    3,
+    6,
+    65,
+    99,
+    38,
+    220,
     219,
-    200,
-    220
+    197
   ],
-  "totalCommits": 882,
+  "totalCommits": 886,
   "activeWeeks": 10,
   "pages": [
     {
