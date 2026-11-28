@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-11-27T08:47:57.948657+00:00",
+  "generatedAt": "2026-11-28T08:04:37.559474+00:00",
   "repos": [
     {
       "fullName": "radaiko/twiggy",
       "name": "twiggy",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 104,
-      "lastActivity": "2026-11-26T18:00:15Z"
+      "commits": 108,
+      "lastActivity": "2026-11-28T07:15:53Z"
     },
     {
       "fullName": "radaiko/SnackPilot",
       "name": "SnackPilot",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 405,
-      "lastActivity": "2026-11-26T09:41:28Z"
+      "commits": 417,
+      "lastActivity": "2026-11-27T22:48:31Z"
     },
     {
       "fullName": "radaiko/personal-notes",
@@ -78,7 +78,7 @@
       "name": "orbitar",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 13,
+      "commits": 10,
       "lastActivity": "2026-09-13T14:50:46Z"
     },
     {
@@ -86,26 +86,26 @@
       "name": "bugs-attack",
       "owner": "radaiko",
       "isOwn": true,
-      "commits": 15,
+      "commits": 9,
       "lastActivity": "2026-09-10T10:37:42Z"
     }
   ],
   "weeklyCommits": [
-    26,
+    17,
     2,
     0,
     0,
-    8,
-    1,
-    134,
-    45,
-    55,
-    236,
-    212,
-    187
+    9,
+    0,
+    152,
+    27,
+    118,
+    235,
+    206,
+    147
   ],
-  "totalCommits": 906,
-  "activeWeeks": 10,
+  "totalCommits": 913,
+  "activeWeeks": 9,
   "pages": [
     {
       "name": "flagit",
